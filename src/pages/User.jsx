@@ -1,0 +1,294 @@
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import SectionWrapper from '../components/ui/SectionWrapper';
+import Badge from '../components/ui/Badge';
+import Button from '../components/ui/Button';
+import Card from '../components/ui/Card';
+import Footer from '../components/Footer';
+import UserFeatures from '../components/UserFeatures';
+
+const voiceCartSteps = [
+  { id: 1, lang: 'Hindi', flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
+  { id: 2, lang: 'Processing...', flag: '🤖', speech: 'AI is understanding your request...', items: [] },
+  {
+    id: 3,
+    lang: 'Added to Cart!',
+    flag: '✅',
+    speech: 'Found 3 items from Rajesh General Store',
+    items: [
+      { name: 'Aata (Wheat Flour)', qty: '1 kg', price: '₹52' },
+      { name: 'Dal (Toor)', qty: '500 gm', price: '₹75' },
+      { name: 'Milk Packet', qty: '2×500ml', price: '₹56' },
+    ],
+  },
+];
+
+function VoiceCartDemo() {
+  const [step, setStep] = useState(0);
+  const [running, setRunning] = useState(false);
+
+  const runDemo = () => {
+    if (running) return;
+    setRunning(true);
+    setStep(0);
+    setTimeout(() => setStep(1), 500);
+    setTimeout(() => setStep(2), 2000);
+    setTimeout(() => { setStep(3); setRunning(false); }, 3500);
+  };
+
+  const current = voiceCartSteps[step - 1];
+
+  return (
+    <div className="bg-white border border-[#1AAB6D]/20 rounded-3xl p-6 md:p-8 max-w-lg mx-auto shadow-sm">
+      <h3 className="text-xl font-black text-[#1A1A2E] mb-6 text-center">
+        🎤 AI Voice Cart — Try It
+      </h3>
+
+      <div className="bg-[#F0FBF5] rounded-2xl p-5 mb-6 min-h-[200px] flex flex-col border border-[#1AAB6D]/10">
+        <AnimatePresence mode="wait">
+          {step === 0 && (
+            <motion.div
+              key="idle"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex-1 flex flex-col items-center justify-center text-center"
+            >
+              <div className="w-20 h-20 bg-[#E8F5EE] rounded-full flex items-center justify-center mb-4">
+                <span className="text-4xl">🎤</span>
+              </div>
+              <p className="text-gray-400 text-sm">Tap the button below to speak your grocery list</p>
+            </motion.div>
+          )}
+
+          {current && (
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="flex-1 flex flex-col"
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-xl">{current.flag}</span>
+                <span className="text-[#1AAB6D] text-sm font-bold">{current.lang}</span>
+              </div>
+
+              <div className="bg-white border border-[#1AAB6D]/20 rounded-xl p-3 mb-3 shadow-sm">
+                <p className="text-sm text-gray-700">{current.speech}</p>
+              </div>
+
+              {current.items?.length > 0 && (
+                <div className="space-y-2 flex-1">
+                  {current.items.map((item, i) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.15 }}
+                      className="flex items-center justify-between bg-white rounded-xl px-3 py-2 shadow-sm border border-gray-100"
+                    >
+                      <div>
+                        <p className="text-xs font-semibold text-[#1A1A2E]">{item.name}</p>
+                        <p className="text-xs text-gray-400">{item.qty}</p>
+                      </div>
+                      <p className="text-[#1AAB6D] font-bold text-sm">{item.price}</p>
+                    </motion.div>
+                  ))}
+                  <div className="flex justify-between pt-2 border-t border-[#1AAB6D]/10">
+                    <span className="text-xs text-gray-400">Total + ₹2 delivery</span>
+                    <span className="text-[#1AAB6D] font-black text-sm">₹185</span>
+                  </div>
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className="flex items-center gap-2 mt-4">
+                  <motion.div
+                    className="flex gap-1"
+                    animate={{ opacity: [0.4, 1, 0.4] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  >
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className="w-2 h-2 bg-[#1AAB6D] rounded-full" />
+                    ))}
+                  </motion.div>
+                  <span className="text-xs text-gray-400">AI processing...</span>
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <motion.button
+        onClick={runDemo}
+        disabled={running}
+        className={`w-full py-4 rounded-2xl font-bold text-base transition-all ${
+          running
+            ? 'bg-[#E8F5EE] text-[#1AAB6D]/50 cursor-not-allowed'
+            : 'bg-[#1AAB6D] text-white hover:bg-[#148A57]'
+        }`}
+        whileHover={!running ? { scale: 1.02 } : {}}
+        whileTap={!running ? { scale: 0.98 } : {}}
+      >
+        {running ? '🎙️ Listening...' : step === 3 ? '🔄 Try Again' : '🎤 Speak Your Order (Demo)'}
+      </motion.button>
+    </div>
+  );
+}
+
+const userSteps = [
+  { step: 1, icon: '📲', title: 'Download Free', desc: 'Get LocSho from App Store or Google Play. No sign-up fee.' },
+  { step: 2, icon: '📍', title: 'Find Nearby Shops', desc: 'GPS shows local stores within 5km of your location.' },
+  { step: 3, icon: '🎤', title: 'Speak or Type', desc: 'Order in Hindi, Tamil, Telugu, Kannada or English.' },
+  { step: 4, icon: '🚴', title: 'Track & Receive', desc: 'Live GPS tracking. Delivered to your door in 30 minutes.' },
+];
+
+const languageSamples = [
+  { lang: 'Hindi', sample: 'एक किलो चावल, दो पेन', flag: '🇮🇳' },
+  { lang: 'Telugu', sample: 'ఒక కిలో బియ్యం కావాలి', flag: '🏳️' },
+  { lang: 'Tamil', sample: 'ஒரு கிலோ அரிசி வேண்டும்', flag: '🏳️' },
+  { lang: 'Kannada', sample: 'ಒಂದು ಕೆಜಿ ಅಕ್ಕಿ ಬೇಕು', flag: '🏳️' },
+];
+
+export default function User() {
+  useEffect(() => {
+    document.title = 'LocSho For Users — Order Local, In Your Language';
+  }, []);
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="bg-[#F0FBF5] pt-24 pb-16 px-4 relative overflow-hidden">
+        <div className="absolute -top-40 -left-40 pointer-events-none">
+          {[400, 300, 200].map((size) => (
+            <div
+              key={size}
+              className="absolute rounded-full border border-[#1AAB6D]/10"
+              style={{ width: size, height: size, top: -size / 2, left: -size / 2 }}
+            />
+          ))}
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <Badge color="green" className="mb-6">For Customers</Badge>
+          <h1 className="text-4xl md:text-5xl font-black text-[#1A1A2E] mb-6">
+            Your Local Shop,{' '}
+            <span className="text-[#1AAB6D]">On Demand</span>
+          </h1>
+          <p className="text-gray-500 text-lg mb-8 max-w-2xl mx-auto">
+            Order groceries, stationery &amp; pharmacy from local shops — in your language.
+            AI voice ordering, just ₹2 delivery, at your door in 30 minutes.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="primary" size="lg" href="/download">
+              📱 Download Free
+            </Button>
+            <Button variant="outline" size="lg" href="#demo">
+              🎤 Try Voice Demo
+            </Button>
+          </div>
+          <p className="text-gray-400 text-sm mt-4">Free to download · ₹2/order delivery · 500+ orders delivered</p>
+        </div>
+      </section>
+
+      {/* Features */}
+      <UserFeatures />
+
+      {/* How it works */}
+      <SectionWrapper background="mint">
+        <div className="text-center mb-12">
+          <Badge color="green" className="mb-4">How it works</Badge>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
+            Order in <span className="text-[#1AAB6D]">4 Simple Steps</span>
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {userSteps.map((s, i) => (
+            <motion.div
+              key={s.step}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <Card className="text-center bg-white border border-[#1AAB6D]/10 relative">
+                <div className="absolute -top-3 -right-3 w-7 h-7 bg-[#1AAB6D] text-white text-xs font-black rounded-full flex items-center justify-center shadow-md">
+                  {s.step}
+                </div>
+                <div className="w-14 h-14 bg-[#E8F5EE] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
+                  {s.icon}
+                </div>
+                <h3 className="font-bold text-[#1A1A2E] mb-2">{s.title}</h3>
+                <p className="text-gray-500 text-sm">{s.desc}</p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      {/* Language samples */}
+      <SectionWrapper background="white">
+        <div className="text-center mb-10">
+          <Badge color="green" className="mb-4">Any Language</Badge>
+          <h2 className="text-3xl font-black text-[#1A1A2E] mb-4">
+            Order in <span className="text-[#1AAB6D]">Your Language</span>
+          </h2>
+          <p className="text-gray-500 max-w-lg mx-auto">
+            Hindi, Telugu, Tamil, Kannada, English — our AI understands them all.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {languageSamples.map((ls, i) => (
+            <motion.div
+              key={ls.lang}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-[#F0FBF5] border border-[#1AAB6D]/15 rounded-2xl p-5 text-center"
+            >
+              <div className="text-3xl mb-2">{ls.flag}</div>
+              <p className="font-bold text-[#1A1A2E] text-sm mb-2">{ls.lang}</p>
+              <p className="text-gray-600 text-sm leading-relaxed">{ls.sample}</p>
+            </motion.div>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      {/* Voice Cart Demo */}
+      <SectionWrapper background="mint" id="demo">
+        <div className="text-center mb-12">
+          <Badge color="green" className="mb-4">Interactive Demo</Badge>
+          <h2 className="text-3xl font-black text-[#1A1A2E] mb-4">
+            AI Voice Cart <span className="text-[#1AAB6D]">In Action</span>
+          </h2>
+          <p className="text-gray-500 max-w-lg mx-auto mb-10">
+            See how speaking in Hindi automatically adds items to your cart — no typing needed.
+          </p>
+          <VoiceCartDemo />
+        </div>
+      </SectionWrapper>
+
+      {/* CTA */}
+      <SectionWrapper background="white">
+        <div className="max-w-2xl mx-auto text-center bg-[#F0FBF5] border border-[#1AAB6D]/20 rounded-3xl p-10">
+          <div className="w-16 h-16 bg-[#E8F5EE] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
+            🛍️
+          </div>
+          <h2 className="text-3xl font-black text-[#1A1A2E] mb-4">
+            Ready to Order?
+          </h2>
+          <p className="text-gray-500 mb-8 max-w-md mx-auto">
+            Download free. First order ₹2 delivery. Your neighborhood shops, now on your phone.
+          </p>
+          <Button variant="primary" size="xl" href="/download">
+            📱 Download LocSho Free
+          </Button>
+        </div>
+      </SectionWrapper>
+
+      <Footer />
+    </>
+  );
+}
