@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionWrapper from '../components/ui/SectionWrapper';
-import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Footer from '../components/Footer';
 import UserFeatures from '../components/UserFeatures';
+import { demoVideos } from '../data/media';
 
 const voiceCartSteps = [
   { id: 1, lang: 'Hindi', flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
@@ -16,9 +16,9 @@ const voiceCartSteps = [
     flag: '✅',
     speech: 'Found 3 items from Rajesh General Store',
     items: [
-      { name: 'Aata (Wheat Flour)', qty: '1 kg', price: '₹52' },
-      { name: 'Dal (Toor)', qty: '500 gm', price: '₹75' },
-      { name: 'Milk Packet', qty: '2×500ml', price: '₹56' },
+      { name: 'Aata (Wheat Flour)', qty: '1 kg',    price: '₹52' },
+      { name: 'Dal (Toor)',         qty: '500 gm',  price: '₹75' },
+      { name: 'Milk Packet',        qty: '2×500ml', price: '₹56' },
     ],
   },
 ];
@@ -96,8 +96,8 @@ function VoiceCartDemo() {
                     </motion.div>
                   ))}
                   <div className="flex justify-between pt-2 border-t border-[#1AAB6D]/10">
-                    <span className="text-xs text-gray-400">Total + ₹2 delivery</span>
-                    <span className="text-[#1AAB6D] font-black text-sm">₹185</span>
+                    <span className="text-xs text-gray-400">Order Total</span>
+                    <span className="text-[#1AAB6D] font-black text-sm">₹183</span>
                   </div>
                 </div>
               )}
@@ -139,17 +139,10 @@ function VoiceCartDemo() {
 }
 
 const userSteps = [
-  { step: 1, icon: '📲', title: 'Download Free', desc: 'Get LocSho from App Store or Google Play. No sign-up fee.' },
-  { step: 2, icon: '📍', title: 'Find Nearby Shops', desc: 'GPS shows local stores within 5km of your location.' },
-  { step: 3, icon: '🎤', title: 'Speak or Type', desc: 'Order in Hindi, Tamil, Telugu, Kannada or English.' },
-  { step: 4, icon: '🚴', title: 'Track & Receive', desc: 'Live GPS tracking. Delivered to your door in 30 minutes.' },
-];
-
-const languageSamples = [
-  { lang: 'Hindi', sample: 'एक किलो चावल, दो पेन', flag: '🇮🇳' },
-  { lang: 'Telugu', sample: 'ఒక కిలో బియ్యం కావాలి', flag: '🏳️' },
-  { lang: 'Tamil', sample: 'ஒரு கிலோ அரிசி வேண்டும்', flag: '🏳️' },
-  { lang: 'Kannada', sample: 'ಒಂದು ಕೆಜಿ ಅಕ್ಕಿ ಬೇಕು', flag: '🏳️' },
+  { step: 1, icon: '📍', title: 'Find Nearby Shops',        desc: 'Browse grocery stores, vegetable vendors, dairy shops and other nearby stores available on the platform.' },
+  { step: 2, icon: '🛒', title: 'Add Items to Your Order',  desc: 'Search products easily or quickly create your order list in seconds.' },
+  { step: 3, icon: '📲', title: 'Send Order to Shop',       desc: 'Send your order directly to the shop. The shopkeeper will confirm the price and prepare your order.' },
+  { step: 4, icon: '🚚', title: 'Pickup or Local Delivery', desc: 'Collect your order from the shop or receive it through local delivery if available.' },
 ];
 
 export default function User() {
@@ -171,24 +164,34 @@ export default function User() {
           ))}
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Badge color="green" className="mb-6">For Customers</Badge>
-          <h1 className="text-4xl md:text-5xl font-black text-[#1A1A2E] mb-6">
-            Your Local Shop,{' '}
-            <span className="text-[#1AAB6D]">On Demand</span>
+          <h1 className="text-5xl md:text-7xl font-black text-[#1A1A2E] mb-6 leading-tight">
+            Order Directly From{' '}
+            <span className="text-[#1AAB6D]">Local Shops</span>
           </h1>
           <p className="text-gray-500 text-lg mb-8 max-w-2xl mx-auto">
-            Order groceries, stationery &amp; pharmacy from local shops — in your language.
-            AI voice ordering, just ₹2 delivery, at your door in 30 minutes.
+            Groceries, vegetables, dairy and local stores — now available online from shops you already trust.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg" href="/download">
-              📱 Download Free
-            </Button>
-            <Button variant="outline" size="lg" href="#demo">
-              🎤 Try Voice Demo
-            </Button>
+          <div className="flex flex-wrap justify-center gap-10 mb-8">
+            {[
+              { value: '500+', label: 'Local Shops' },
+              { value: '2km',  label: 'Radius Coverage' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-4xl font-black text-[#1AAB6D]">{stat.value}</p>
+                <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+              </div>
+            ))}
           </div>
-          <p className="text-gray-400 text-sm mt-4">Free to download · ₹2/order delivery · 500+ orders delivered</p>
+          <ul className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 mb-8">
+            {['No Extra Charges', 'Better Prices', 'Fast Pickup or Local Delivery', 'Direct Payment to Shop'].map((benefit) => (
+              <li key={benefit} className="flex items-center gap-2 text-[#1A1A2E] font-medium text-sm">
+                <span className="w-5 h-5 bg-[#1AAB6D] rounded-full flex items-center justify-center text-white text-xs">✓</span>
+                {benefit}
+              </li>
+            ))}
+          </ul>
+          <Button variant="primary" size="lg" href="/download">Start Ordering</Button>
+          <p className="text-gray-400 text-sm mt-4">Trusted by local shops and growing every week.</p>
         </div>
       </section>
 
@@ -198,12 +201,11 @@ export default function User() {
       {/* How it works */}
       <SectionWrapper background="mint">
         <div className="text-center mb-12">
-          <Badge color="green" className="mb-4">How it works</Badge>
           <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
-            Order in <span className="text-[#1AAB6D]">4 Simple Steps</span>
+            How It <span className="text-[#1AAB6D]">Works</span>
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {userSteps.map((s, i) => (
             <motion.div
               key={s.step}
@@ -211,8 +213,9 @@ export default function User() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
+              className="h-full"
             >
-              <Card className="text-center bg-white border border-[#1AAB6D]/10 relative">
+              <Card className="text-center bg-white border border-[#1AAB6D]/10 relative h-full">
                 <div className="absolute -top-3 -right-3 w-7 h-7 bg-[#1AAB6D] text-white text-xs font-black rounded-full flex items-center justify-center shadow-md">
                   {s.step}
                 </div>
@@ -227,64 +230,87 @@ export default function User() {
         </div>
       </SectionWrapper>
 
-      {/* Language samples */}
+      {/* AI Voice Cart Demo */}
       <SectionWrapper background="white">
         <div className="text-center mb-10">
-          <Badge color="green" className="mb-4">Any Language</Badge>
-          <h2 className="text-3xl font-black text-[#1A1A2E] mb-4">
-            Order in <span className="text-[#1AAB6D]">Your Language</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-3">
+            Order by <span className="text-[#1AAB6D]">Voice</span>
           </h2>
-          <p className="text-gray-500 max-w-lg mx-auto">
-            Hindi, Telugu, Tamil, Kannada, English — our AI understands them all.
+          <p className="text-gray-500 max-w-sm mx-auto">
+            Speak your grocery list in Hindi, Telugu, Tamil, or Kannada — we'll build your cart instantly.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {languageSamples.map((ls, i) => (
-            <motion.div
-              key={ls.lang}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-[#F0FBF5] border border-[#1AAB6D]/15 rounded-2xl p-5 text-center"
-            >
-              <div className="text-3xl mb-2">{ls.flag}</div>
-              <p className="font-bold text-[#1A1A2E] text-sm mb-2">{ls.lang}</p>
-              <p className="text-gray-600 text-sm leading-relaxed">{ls.sample}</p>
-            </motion.div>
-          ))}
-        </div>
+        <VoiceCartDemo />
       </SectionWrapper>
 
-      {/* Voice Cart Demo */}
-      <SectionWrapper background="mint" id="demo">
-        <div className="text-center mb-12">
-          <Badge color="green" className="mb-4">Interactive Demo</Badge>
-          <h2 className="text-3xl font-black text-[#1A1A2E] mb-4">
-            AI Voice Cart <span className="text-[#1AAB6D]">In Action</span>
-          </h2>
-          <p className="text-gray-500 max-w-lg mx-auto mb-10">
-            See how speaking in Hindi automatically adds items to your cart — no typing needed.
-          </p>
-          <VoiceCartDemo />
-        </div>
-      </SectionWrapper>
-
-      {/* CTA */}
+      {/* See it in Action */}
       <SectionWrapper background="white">
-        <div className="max-w-2xl mx-auto text-center bg-[#F0FBF5] border border-[#1AAB6D]/20 rounded-3xl p-10">
-          <div className="w-16 h-16 bg-[#E8F5EE] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
-            🛍️
-          </div>
-          <h2 className="text-3xl font-black text-[#1A1A2E] mb-4">
-            Ready to Order?
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-3">
+            See It in <span className="text-[#1AAB6D]">Action</span>
           </h2>
-          <p className="text-gray-500 mb-8 max-w-md mx-auto">
-            Download free. First order ₹2 delivery. Your neighborhood shops, now on your phone.
+          <p className="text-gray-500 mb-8">
+            Watch how easy it is to order from local shops near you.
           </p>
-          <Button variant="primary" size="xl" href="/download">
-            📱 Download LocSho Free
-          </Button>
+
+          {demoVideos.user ? (
+            <iframe
+              src={demoVideos.user}
+              title="LocSho User App Demo"
+              className="w-full aspect-video rounded-2xl shadow-lg mb-8"
+              loading="lazy"
+              allowFullScreen
+            />
+          ) : (
+            <div className="bg-[#F0FBF5] rounded-3xl aspect-video flex flex-col items-center justify-center border-2 border-dashed border-[#1AAB6D]/20 mb-8">
+              <div className="w-14 h-14 bg-[#1AAB6D]/10 rounded-full flex items-center justify-center mb-3">
+                <span className="text-3xl">▶️</span>
+              </div>
+              <p className="text-gray-400 text-sm">Demo video coming soon</p>
+            </div>
+          )}
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button variant="primary" size="lg" href="/download">
+              Download & Try Free
+            </Button>
+            <p className="text-gray-400 text-sm">Join 50K+ users already ordering locally</p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Request Your Shop */}
+      <SectionWrapper id="request-shop" background="white">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="text-5xl mb-6">🏪</div>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
+            Request Your <span className="text-[#1AAB6D]">Shop</span>
+          </h2>
+          <p className="text-gray-500 text-lg mb-4">
+            Can't find your nearby shop on the platform?
+          </p>
+          <p className="text-gray-500 mb-8">
+            Tell us the shop name and location, and we will invite them to join LocSho
+            so you can order from them in the future.
+          </p>
+          <Button variant="primary" size="lg" href="/contact">Request a Shop</Button>
+        </div>
+      </SectionWrapper>
+
+      {/* Community Support */}
+      <SectionWrapper id="community-support" background="dark">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="text-5xl mb-6">🤝</div>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
+            Community <span className="text-[#1AAB6D]">Support</span>
+          </h2>
+          <p className="text-gray-300 text-lg mb-4">
+            LocSho connects customers directly with nearby shopkeepers.
+          </p>
+          <p className="text-gray-400">
+            By ordering from local businesses, you help support neighbourhood shops
+            and strengthen the local economy.
+          </p>
         </div>
       </SectionWrapper>
 

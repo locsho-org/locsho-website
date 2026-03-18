@@ -11,7 +11,7 @@ export default function Footer() {
               Ready to join the local revolution?
             </h3>
             <p className="text-gray-500 text-sm">
-              Bangalore pilot — expanding soon. Be an early adopter.
+              Greater Noida pilot — expanding soon. Be an early adopter.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -87,9 +87,6 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: 'Join as Partner', href: '/partner' },
-                { label: 'Earnings Calculator', href: '/partner#calculator' },
-                { label: 'Partner FAQs', href: '/partner#faq' },
-                { label: 'Partner Demo', href: '/demo' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm transition-colors">
@@ -107,10 +104,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { label: 'About LocSho', href: '/' },
-                { label: 'Contact Us', href: '/' },
+                { label: 'User App', href: '/user' },
                 { label: 'Privacy Policy', href: '/' },
-                { label: 'Terms of Service', href: '/' },
+                { label: 'Terms & Conditions', href: '/' },
+                { label: 'Support', href: '/' },
+                { label: 'Contact Us', href: '/' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm transition-colors">
@@ -125,12 +123,12 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-xs">
-            © 2026 LocSho. Bangalore Pilot. Built with ❤️ for local India.
+            © 2026 LocSho. Greater Noida Pilot. Built with ❤️ for local India.
           </p>
           <div className="flex items-center gap-4 text-gray-400 text-xs">
             <span>🇮🇳 Made in India</span>
             <span>•</span>
-            <span>Bangalore, Karnataka</span>
+            <span>Greater Noida, Uttar Pradesh</span>
           </div>
         </div>
       </div>

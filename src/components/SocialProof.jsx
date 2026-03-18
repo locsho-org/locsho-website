@@ -36,12 +36,12 @@ export default function SocialProof() {
   return (
     <SectionWrapper id="social-proof" background="mint">
       <div className="text-center mb-12">
-        <Badge color="green" className="mb-4">Bangalore Pilot</Badge>
+        <Badge color="green" className="mb-4">Greater Noida Pilot</Badge>
         <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
           Growing Every <span className="text-[#1AAB6D]">Single Day</span>
         </h2>
         <p className="text-gray-500 max-w-lg mx-auto">
-          Started in Koramangala, now expanding across Bangalore. Real numbers, real shops, real deliveries.
+          Started in Sector 62, now expanding across Greater Noida. Real numbers, real shops, real deliveries.
         </p>
       </div>
 
@@ -71,7 +71,7 @@ export default function SocialProof() {
         {[
           { icon: '🔒', title: 'Secure Payments', desc: 'UPI, cards, wallets — all PCI-DSS compliant' },
           { icon: '📍', title: 'Verified Shops Only', desc: 'Every partner shop is physically verified' },
-          { icon: '🤝', title: 'Local-first Mission', desc: 'Built to empower Bangalore shop owners' },
+          { icon: '🤝', title: 'Local-first Mission', desc: 'Built to empower Greater Noida shop owners' },
         ].map((item, i) => (
           <motion.div
             key={i}

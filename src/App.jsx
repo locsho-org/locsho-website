@@ -1,12 +1,9 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
-// import WhatsAppWidget from './components/WhatsAppWidget'; // re-enable when real WhatsApp number is set
-import Home from './pages/Home';
 import User from './pages/User';
 import Partner from './pages/Partner';
 import Download from './pages/Download';
-import Demo from './pages/Demo';
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
@@ -23,14 +20,12 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="/user" replace />} />
         <Route path="/user" element={<User />} />
         <Route path="/partner" element={<Partner />} />
         <Route path="/download" element={<Download />} />
-        <Route path="/demo" element={<Demo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* <WhatsAppWidget /> */}
     </BrowserRouter>
   );
 }

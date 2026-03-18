@@ -7,7 +7,7 @@ export const stats = [
     suffix: '+',
     label: 'Verified Local Shops',
     icon: '🏪',
-    description: 'Bangalore pilot',
+    description: 'Greater Noida pilot',
   },
   {
     id: 'orders',

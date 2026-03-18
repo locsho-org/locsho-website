@@ -74,7 +74,7 @@ export default function HeroSection() {
           >
             <motion.div variants={fadeUp}>
               <Badge color="green" className="mb-6">
-                🚀 Bangalore Pilot — Now Live
+                🚀 Greater Noida Pilot — Now Live
               </Badge>
             </motion.div>
 

@@ -21,19 +21,6 @@ export const userFeatures = [
     description: 'Instantly find verified local shops within 2km of your location. Always fresh, always local.',
   },
   {
-    id: 'multi-cart',
-    icon: '🛒',
-    title: 'Multi-shop Cart',
-    description: 'Order from multiple local shops in a single checkout. One payment, one delivery window.',
-  },
-  {
-    id: 'low-fee',
-    icon: '💰',
-    title: '₹2/Order Delivery Fee',
-    description: 'Flat ₹2 delivery fee for orders over ₹199. No surge pricing, no hidden charges — ever.',
-    highlight: true,
-  },
-  {
     id: 'live-tracking',
     icon: '🚴',
     title: 'Live Order Tracking',

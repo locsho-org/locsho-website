@@ -19,10 +19,8 @@ export default function Navbar() {
   }, [location]);
 
   const navLinks = [
-    { label: 'Home', to: '/' },
     { label: 'For User', to: '/user' },
     { label: 'For Shopkeeper', to: '/partner' },
-    { label: 'Demo', to: '/demo' },
   ];
 
   return (
