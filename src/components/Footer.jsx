@@ -1,29 +1,38 @@
 import { Link } from 'react-router-dom';
+import { 
+  Smartphone, 
+  MessageSquare, 
+  Mail, 
+  Instagram, 
+  Twitter, 
+  Facebook,
+  ArrowRight
+} from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100">
       {/* CTA strip — matching partner dashboard "Activate Subscription" banner style */}
-      <div className="bg-[#F0FBF5] border-b border-[#1AAB6D]/15 py-10 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div className="bg-[#F0FBF5] border-b border-[#1AAB6D]/15 py-12 px-4">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
-            <h3 className="text-2xl font-black text-[#1A1A2E] mb-1">
+            <h3 className="text-3xl font-black text-[#1A1A2E] mb-2 tracking-tight uppercase">
               Ready to join the local revolution?
             </h3>
-            <p className="text-gray-500 text-sm">
-              Greater Noida pilot — expanding soon. Be an early adopter.
+            <p className="text-gray-500 font-medium max-w-lg">
+              Greater Noida pilot — expanding soon. Be an early adopter and put your shop on the map today.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <Link
               to="/download"
-              className="px-6 py-3 bg-[#1AAB6D] text-white font-semibold rounded-full hover:bg-[#148A57] transition-colors text-sm shadow-md"
+              className="px-8 py-4 bg-[#1AAB6D] text-white font-black uppercase tracking-widest rounded-2xl hover:bg-[#148A57] transition-all text-xs shadow-xl shadow-green-900/10 active:scale-95"
             >
               📱 Download App
             </Link>
             <Link
               to="/partner"
-              className="px-6 py-3 bg-white text-[#1AAB6D] font-semibold rounded-full border border-[#1AAB6D] hover:bg-[#E8F5EE] transition-colors text-sm"
+              className="px-8 py-4 bg-white text-[#1AAB6D] font-black uppercase tracking-widest rounded-2xl border-2 border-[#1AAB6D] hover:bg-[#E8F5EE] transition-all text-xs active:scale-95"
             >
               🏪 Partner With Us
             </Link>
@@ -32,46 +41,53 @@ export default function Footer() {
       </div>
 
       {/* Main footer */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div className="max-w-[1400px] mx-auto px-4 py-16">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[#1AAB6D] rounded-lg flex items-center justify-center text-white font-black text-sm">
+          <div className="col-span-2 lg:col-span-2">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-10 h-10 bg-[#1AAB6D] rounded-xl flex items-center justify-center text-white font-black text-lg shadow-lg shadow-green-900/10">
                 L
               </div>
-              <span className="font-black text-xl text-[#1A1A2E]">
+              <span className="font-black text-2xl text-[#1A1A2E] tracking-tighter">
                 Loc<span className="text-[#1AAB6D]">sho</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Hyperlocal delivery at your doorstep. Supporting local shops with technology.
+            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-xs font-medium">
+              Hyperlocal delivery at your doorstep. We are bridging the gap between local shopkeepers and digital customers using smart technology.
             </p>
             <div className="flex gap-3">
-              {['📱', '💬', '📧'].map((icon, i) => (
+              {[
+                { icon: Instagram, label: 'Instagram' },
+                { icon: Twitter, label: 'Twitter' },
+                { icon: Facebook, label: 'Facebook' },
+                { icon: Mail, label: 'Email' },
+              ].map((social, i) => (
                 <button
                   key={i}
-                  className="w-9 h-9 bg-[#E8F5EE] rounded-full flex items-center justify-center hover:bg-[#d4eede] transition-colors text-sm"
+                  aria-label={social.label}
+                  className="w-10 h-10 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#1AAB6D] hover:bg-[#E8F5EE] hover:border-[#1AAB6D]/20 transition-all shadow-sm group"
                 >
-                  {icon}
+                  <social.icon size={18} strokeWidth={2.5} className="group-hover:scale-110 transition-transform" />
                 </button>
               ))}
             </div>
           </div>
 
           {/* Download */}
-          <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-gray-400 mb-4">
+          <div className="lg:pl-8">
+            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">
               Download
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
-                { label: '🍎 App Store', href: '/download' },
-                { label: '🤖 Google Play', href: '/download' },
-                { label: '📲 QR Code', href: '/download' },
+                { label: 'App Store', href: '/download' },
+                { label: 'Google Play', href: '/download' },
+                { label: 'QR Code', href: '/download' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm transition-colors">
+                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
                     {item.label}
                   </Link>
                 </li>
@@ -81,15 +97,18 @@ export default function Footer() {
 
           {/* For Partners */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-gray-400 mb-4">
+            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">
               For Partners
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
                 { label: 'Join as Partner', href: '/partner' },
+                { label: 'Partner Login', href: '/partner' },
+                { label: 'Pricing Plans', href: '/partner' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm transition-colors">
+                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
                     {item.label}
                   </Link>
                 </li>
@@ -99,19 +118,19 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-gray-400 mb-4">
+            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">
               Company
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
-                { label: 'User App', href: '/user' },
                 { label: 'Privacy Policy', href: '/' },
-                { label: 'Terms & Conditions', href: '/' },
-                { label: 'Support', href: '/' },
+                { label: 'Terms of Service', href: '/' },
+                { label: 'Support Center', href: '/' },
                 { label: 'Contact Us', href: '/' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm transition-colors">
+                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
                     {item.label}
                   </Link>
                 </li>
@@ -121,14 +140,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-400 text-xs">
+        <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest">
             © 2026 LocSho. Greater Noida Pilot. Built with ❤️ for local India.
           </p>
-          <div className="flex items-center gap-4 text-gray-400 text-xs">
-            <span>🇮🇳 Made in India</span>
-            <span>•</span>
-            <span>Greater Noida, Uttar Pradesh</span>
+          <div className="flex items-center gap-6 text-gray-400 text-[10px] font-black uppercase tracking-widest">
+            <span className="flex items-center gap-2">🇮🇳 <span className="opacity-60">Made in India</span></span>
+            <span className="opacity-20">•</span>
+            <span className="opacity-60">Greater Noida, Uttar Pradesh</span>
           </div>
         </div>
       </div>

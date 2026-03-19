@@ -31,7 +31,7 @@ export default function Navbar() {
           : 'bg-white/80 backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-[#1AAB6D] rounded-lg flex items-center justify-center text-white font-black text-sm">

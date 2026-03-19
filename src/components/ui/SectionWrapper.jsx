@@ -27,7 +27,7 @@ export default function SectionWrapper({
       className={`py-16 md:py-24 px-4 ${backgrounds[background]} ${className}`}
     >
       <motion.div
-        className="max-w-6xl mx-auto"
+        className="max-w-[1400px] mx-auto"
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
