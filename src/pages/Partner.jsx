@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionWrapper from '../components/ui/SectionWrapper';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
@@ -11,37 +12,39 @@ import PhoneMockup from '../components/ui/PhoneMockup';
 import { demoVideos } from '../data/media';
 
 const partnerSteps = [
-  { step: 1, icon: '📝', title: 'Register in Seconds',         desc: 'Create your shop account using just your mobile number. No complex paperwork.' },
-  { step: 2, icon: '📦', title: 'Smart Catalog Setup',               desc: 'Use AI to auto-populate your items or bulk upload your existing price list.' },
-  { step: 3, icon: '🔔', title: 'Real-time Alerts',             desc: 'Receive instant notifications when customers in your area place an order.' },
-  { step: 4, icon: '✅', title: 'Direct Management', desc: 'Confirm prices and availability. Prepare orders for rapid pickup or delivery.' },
-  { step: 5, icon: '💳', title: 'Zero Wait Payouts',          desc: 'Get paid instantly to your shop UPI. No weekly settlement delays.' },
+  { step: 1, icon: '📝', titleKey: 'partnerPage.step1',  descKey: 'partnerPage.step1Desc' },
+  { step: 2, icon: '📦', titleKey: 'partnerPage.step2',  descKey: 'partnerPage.step2Desc' },
+  { step: 3, icon: '🔔', titleKey: 'partnerPage.step3',  descKey: 'partnerPage.step3Desc' },
+  { step: 4, icon: '✅', titleKey: 'partnerPage.step4',  descKey: 'partnerPage.step4Desc' },
+  { step: 5, icon: '💳', titleKey: 'partnerPage.step5',  descKey: 'partnerPage.step5Desc' },
 ];
 
 const pricingPlans = [
-  { 
-    name: 'Growth', 
-    price: '₹0', 
-    period: 'forever',
-    desc: 'Best for shops just starting their digital journey.',
-    features: ['Up to 50 items', 'Standard visibility', 'Direct UPI payments', 'Basic analytics'],
-    cta: 'Start Free',
+  {
+    nameKey: 'partnerPage.growth',
+    priceKey: 'partnerPage.growthPrice',
+    periodKey: 'partnerPage.growthPeriod',
+    descKey: 'partnerPage.growthDesc',
+    featuresKey: 'partnerPage.growthFeatures',
+    ctaKey: 'partnerPage.startFree',
     highlight: false
   },
-  { 
-    name: 'Professional', 
-    price: '₹499', 
-    period: 'per month',
-    desc: 'Power your shop with full digital tools and reach.',
-    features: ['Unlimited items', 'Priority local visibility', 'Advanced AI catalog', 'Full sales reports', 'Marketing banners'],
-    cta: 'Get Started',
+  {
+    nameKey: 'partnerPage.professional',
+    priceKey: 'partnerPage.proPrice',
+    periodKey: 'partnerPage.proPeriod',
+    descKey: 'partnerPage.proDesc',
+    featuresKey: 'partnerPage.proFeatures',
+    ctaKey: 'partnerPage.getStarted',
     highlight: true
   }
 ];
 
 export default function Partner() {
+  const { t } = useTranslation();
+
   useEffect(() => {
-    document.title = 'LocSho Partner — Digital Growth for Your Local Shop';
+    document.title = 'LocSho Partner — ' + t('partnerPage.subtitle');
   }, []);
 
   return (
@@ -60,21 +63,20 @@ export default function Partner() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge color="green" className="mb-6 py-1.5 px-4 text-xs font-black uppercase tracking-[0.2em]">Business Growth Platform</Badge>
+            <Badge color="green" className="mb-6 py-1.5 px-4 text-xs font-black uppercase tracking-[0.2em]">{t('partnerPage.title')}</Badge>
             <h1 className="text-5xl md:text-6xl font-black text-[#1A1A2E] mb-6 uppercase leading-[1.1] tracking-tighter">
-              Put your shop <br/>
-              <span className="text-[#1AAB6D] underline decoration-[#1AAB6D]/20 underline-offset-8">Online in 8 mins</span>
+              <span className="text-[#1AAB6D] underline decoration-[#1AAB6D]/20 underline-offset-8">{t('partnerPage.subtitle')}</span>
             </h1>
             <p className="text-gray-600 text-lg mb-10 max-w-xl leading-relaxed font-medium">
-              Join the network of 500+ local shops receiving digital orders without high commissions. Reach more customers, manage inventory easily, and grow your revenue.
+              {t('partnerPage.desc')}
             </p>
             
             <ul className="grid sm:grid-cols-2 gap-4 mb-10">
               {[
-                '0% Marketplace Commission',
-                'Payment Direct to Your QR',
-                'AI-Powered Product Setup',
-                'Instant Customer Alerts',
+                t('partnerPage.zeroCommission'),
+                t('partnerPage.directPayment'),
+                t('partnerPage.aiSetup'),
+                t('partnerPage.instantAlerts'),
               ].map((benefit) => (
                 <li key={benefit} className="flex items-center gap-2 text-[#1A1A2E] font-bold text-sm">
                   <span className="w-6 h-6 bg-[#1AAB6D] rounded-full flex items-center justify-center text-white text-[10px]">✓</span>
@@ -85,10 +87,10 @@ export default function Partner() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" href="/download">
-                Register Your Shop
+                {t('partnerPage.registerShop')}
               </Button>
               <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" href="/download">
-                Download App
+                {t('footer.downloadApp')}
               </Button>
             </div>
           </motion.div>
@@ -135,19 +137,18 @@ export default function Partner() {
       <SectionWrapper background="white">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
           <div>
-            <Badge color="green" className="mb-4">Digital Transformation</Badge>
+            <Badge color="green" className="mb-4">{t('partnerPage.digitalTransformation')}</Badge>
             <h2 className="text-4xl font-black text-[#1A1A2E] mb-6 uppercase tracking-tight leading-tight">
-              Bring your shop to <br/>
-              <span className="text-[#1AAB6D]">Their Fingertips</span>
+              {t('partnerPage.bringShop')}
             </h2>
             <p className="text-gray-500 text-lg mb-6 leading-relaxed">
-              Customers in your area are already looking for nearby shops online. Don't let them go to high-commission apps.
+              {t('partnerPage.bringShopDesc')}
             </p>
             <div className="space-y-4">
               {[
-                { title: 'Zero Commisions', desc: 'Keep 100% of your product price. No hidden cuts.' },
-                { title: 'Direct Marketing', desc: 'Promote your shop directly to locals through our platform.' },
-                { title: 'AI Catalog', desc: 'Auto-generate professional photos and descriptions for your items.' },
+                { title: t('partnerPage.zeroCommissions'), desc: t('partnerPage.zeroCommissionsDesc') },
+                { title: t('partnerPage.directMarketing'), desc: t('partnerPage.directMarketingDesc') },
+                { title: t('partnerPage.aiCatalog'), desc: t('partnerPage.aiCatalogDesc') },
               ].map(f => (
                 <div key={f.title} className="flex gap-4">
                   <div className="w-6 h-6 rounded-full bg-[#1AAB6D]/10 flex items-center justify-center shrink-0 mt-1">
@@ -165,9 +166,9 @@ export default function Partner() {
             <div className="absolute top-0 right-0 p-8 text-8xl opacity-[0.03] group-hover:scale-110 transition-transform">🏪</div>
             <div className="text-center">
               <p className="text-5xl font-black text-[#1AAB6D] mb-2 tracking-tighter">500+</p>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-8">Registered Shops</p>
-              <p className="text-gray-600 font-medium italic">"I was live in 8 minutes! My sales have doubled in 2 months. Technology is finally easy."</p>
-              <p className="mt-4 font-bold text-[#1A1A2E]">— Rajesh Kumar, Shop Owner</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-8">{t('partnerPage.registeredShops')}</p>
+              <p className="text-gray-600 font-medium italic">"{t('partnerPage.testimonial')}"</p>
+              <p className="mt-4 font-bold text-[#1A1A2E]">— {t('partnerPage.testimonialAuthor')}</p>
             </div>
           </div>
         </div>
@@ -176,12 +177,12 @@ export default function Partner() {
       {/* Interactive Demo */}
       <SectionWrapper background="mint">
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <Badge color="green" className="mb-4">One-Tap Efficiency</Badge>
+          <Badge color="green" className="mb-4">{t('partnerPage.oneTap')}</Badge>
           <h2 className="text-4xl font-black text-[#1A1A2E] mb-6 uppercase tracking-tight">
-            See How <span className="text-[#1AAB6D]">Orders Arrive</span>
+            {t('partnerPage.seeOrders')}
           </h2>
           <p className="text-gray-500 text-lg font-medium">
-            No complex management. Every order pings you instantly. One tap to accept, one tap to notify the customer.
+            {t('partnerPage.oneTapDesc')}
           </p>
         </div>
         <OrderNotificationDemo />
@@ -191,7 +192,7 @@ export default function Partner() {
       <SectionWrapper background="white">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-black text-[#1A1A2E] uppercase tracking-tight">
-            The Path to <span className="text-[#1AAB6D]">Digital Growth</span>
+            {t('partnerPage.pathToGrowth')}
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -207,8 +208,8 @@ export default function Partner() {
                 <div className="w-16 h-16 bg-[#F0FBF5] rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6">
                   {step.icon}
                 </div>
-                <h3 className="font-black text-[#1A1A2E] mb-3 uppercase text-sm tracking-widest">{step.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed font-medium flex-1">{step.desc}</p>
+                <h3 className="font-black text-[#1A1A2E] mb-3 uppercase text-sm tracking-widest">{t(step.titleKey)}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed font-medium flex-1">{t(step.descKey)}</p>
                 <div className="mt-6 font-black text-[10px] text-[#1AAB6D] bg-[#1AAB6D]/10 py-1 rounded-lg">STEP 0{step.step}</div>
               </Card>
             </motion.div>
@@ -219,28 +220,28 @@ export default function Partner() {
       {/* Pricing Section */}
       <SectionWrapper background="gray">
         <div className="max-w-5xl mx-auto text-center">
-          <Badge color="green" className="mb-4">Simple Pricing</Badge>
+          <Badge color="green" className="mb-4">{t('partnerPage.simplePricing')}</Badge>
           <h2 className="text-4xl font-black text-[#1A1A2E] mb-6 uppercase tracking-tight">
-            Built for <span className="text-[#1AAB6D]">Local Profit</span>
+            {t('partnerPage.builtForProfit')}
           </h2>
           <p className="text-gray-500 text-lg mb-12 max-w-xl mx-auto">
-            Stop giving away your hard-earned margins. LocSho keeps pricing simple and transparent.
+            {t('partnerPage.pricingDesc')}
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {pricingPlans.map(plan => (
-              <Card key={plan.name} className={`text-left p-10 rounded-[2.5rem] flex flex-col relative ${plan.highlight ? 'border-4 border-[#1AAB6D] shadow-2xl shadow-green-900/10' : 'border border-gray-100'}`}>
+              <Card key={plan.nameKey} className={`text-left p-10 rounded-[2.5rem] flex flex-col relative ${plan.highlight ? 'border-4 border-[#1AAB6D] shadow-2xl shadow-green-900/10' : 'border border-gray-100'}`}>
                 {plan.highlight && (
-                  <div className="absolute top-0 right-10 -translate-y-1/2 bg-[#1AAB6D] text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">Recommended</div>
+                  <div className="absolute top-0 right-10 -translate-y-1/2 bg-[#1AAB6D] text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">{t('partnerPage.recommended')}</div>
                 )}
-                <h3 className="text-xl font-black text-[#1A1A2E] uppercase tracking-widest mb-2">{plan.name}</h3>
+                <h3 className="text-xl font-black text-[#1A1A2E] uppercase tracking-widest mb-2">{t(plan.nameKey)}</h3>
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-black text-[#1A1A2E] tracking-tighter">{plan.price}</span>
-                  <span className="text-gray-400 text-sm font-bold">{plan.period}</span>
+                  <span className="text-4xl font-black text-[#1A1A2E] tracking-tighter">{t(plan.priceKey)}</span>
+                  <span className="text-gray-400 text-sm font-bold">{t(plan.periodKey)}</span>
                 </div>
-                <p className="text-gray-500 text-sm font-medium mb-8">{plan.desc}</p>
+                <p className="text-gray-500 text-sm font-medium mb-8">{t(plan.descKey)}</p>
                 <ul className="space-y-4 mb-10 flex-1">
-                  {plan.features.map(f => (
+                  {t(plan.featuresKey, { returnObjects: true }).map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm font-bold text-[#1A1A2E]">
                       <span className="text-[#1AAB6D]">✓</span>
                       {f}
@@ -248,7 +249,7 @@ export default function Partner() {
                   ))}
                 </ul>
                 <Button variant={plan.highlight ? 'primary' : 'outline'} size="lg" className="w-full h-14 rounded-2xl uppercase tracking-widest font-black text-xs">
-                  {plan.cta}
+                  {t(plan.ctaKey)}
                 </Button>
               </Card>
             ))}
@@ -259,9 +260,9 @@ export default function Partner() {
       {/* Real Results Testimonials */}
       <SectionWrapper background="white">
         <div className="text-center mb-16">
-          <Badge color="green" className="mb-4">Partner Success</Badge>
+          <Badge color="green" className="mb-4">{t('partnerPage.partnerSuccess')}</Badge>
           <h2 className="text-4xl font-black text-[#1A1A2E] uppercase tracking-tight">
-            Real Shops, <span className="text-[#1AAB6D]">Real Results</span>
+            {t('partnerPage.realResults')}
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -310,16 +311,15 @@ export default function Partner() {
             🏪
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight uppercase">
-            Claim Your Local <br/>
-            <span className="text-[#1AAB6D]">Digital Territory</span>
+            {t('partnerPage.claimTerritory')}
           </h2>
           <p className="text-gray-300 text-lg mb-10 max-w-md mx-auto font-medium">
-            Join 500+ neighborhood stores already receiving orders. Be the first choice for nearby customers.
+            {t('partnerPage.claimDesc')}
           </p>
           <Button variant="primary" size="xl" className="h-20 px-12 rounded-[2rem] text-lg tracking-[0.2em] uppercase font-black shadow-2xl shadow-[#1AAB6D]/20" href="/download">
-            Register Your Shop
+            {t('partnerPage.registerShop')}
           </Button>
-          <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em] mt-8">Limited visibility slots for new areas</p>
+          <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em] mt-8">{t('partnerPage.limitedSlots')}</p>
         </div>
       </SectionWrapper>
 

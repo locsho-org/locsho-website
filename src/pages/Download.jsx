@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Badge from '../components/ui/Badge';
 import Footer from '../components/Footer';
 
@@ -24,6 +25,7 @@ function useCounter(target, duration = 1800, inView = false) {
 }
 
 function StatItem({ stat, delay, inView }) {
+  const { t } = useTranslation();
   const count = useCounter(stat.target, 1600, inView);
   return (
     <motion.li
@@ -33,71 +35,45 @@ function StatItem({ stat, delay, inView }) {
       className="text-center"
     >
       <p className="text-3xl font-black text-[#1AAB6D]">{stat.format(count)}</p>
-      <p className="text-gray-500 text-sm mt-1">{stat.label}</p>
+      <p className="text-gray-500 text-sm mt-1">{t(stat.labelKey)}</p>
     </motion.li>
   );
 }
 
-const appLinks = [
-  {
-    store: 'App Store',
-    platform: 'Download on the',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true">
-        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-      </svg>
-    ),
-    subtitle: 'iOS 13+',
-    href: '#',
-  },
-  {
-    store: 'Google Play',
-    platform: 'Get it on',
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true">
-        <path d="M3.18 23.76c.3.17.65.19.97.07l12.09-6.97-2.64-2.64-10.42 9.54zm-1.15-21.3c-.05.17-.08.35-.08.54v18c0 .19.03.37.08.54l9.86-9.86-9.86-9.22zm19.55 8.53l-2.86-1.65-2.95 2.69 2.95 2.98 2.88-1.66c.82-.47.82-1.88-.02-2.36zm-17.22 11.36l10.41-9.54-2.64-2.64-7.77 12.18z" />
-      </svg>
-    ),
-    subtitle: 'Android 5+',
-    href: '#',
-  },
-];
+const appleIcon = (
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true">
+    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+  </svg>
+);
+const googleIcon = (
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true">
+    <path d="M3.18 23.76c.3.17.65.19.97.07l12.09-6.97-2.64-2.64-10.42 9.54zm-1.15-21.3c-.05.17-.08.35-.08.54v18c0 .19.03.37.08.54l9.86-9.86-9.86-9.22zm19.55 8.53l-2.86-1.65-2.95 2.69 2.95 2.98 2.88-1.66c.82-.47.82-1.88-.02-2.36zm-17.22 11.36l10.41-9.54-2.64-2.64-7.77 12.18z" />
+  </svg>
+);
 
 // target: raw integer to count to; display: fn to format final/interim value
 const trustStats = [
   {
     target: 48,
-    label: 'App Store Rating',
+    labelKey: 'downloadPage.appStoreRating',
     format: (n) => (n / 10).toFixed(1) + '★',
   },
   {
     target: 50,
-    label: 'Downloads',
+    labelKey: 'downloadPage.downloads',
     format: (n) => n + 'K+',
   },
   {
     target: 2000,
-    label: 'Local Shops',
+    labelKey: 'downloadPage.localShops',
     format: (n) => n.toLocaleString('en-IN') + '+',
   },
 ];
 
 const steps = [
-  {
-    step: '01',
-    title: 'Download the App',
-    desc: 'Available on iOS and Android — free to download.',
-  },
-  {
-    step: '02',
-    title: 'Enter Your Pincode',
-    desc: 'We auto-detect local shops within 2 km of you.',
-  },
-  {
-    step: '03',
-    title: 'Order & Track',
-    desc: 'Place your order and get it delivered in 30 minutes.',
-  },
+  { step: '01', titleKey: 'downloadPage.step1', descKey: 'downloadPage.step1Desc' },
+  { step: '02', titleKey: 'downloadPage.step2', descKey: 'downloadPage.step2Desc' },
+  { step: '03', titleKey: 'downloadPage.step3', descKey: 'downloadPage.step3Desc' },
 ];
 
 function TrustBar() {
@@ -111,7 +87,7 @@ function TrustBar() {
     >
       <ul className="max-w-2xl mx-auto grid grid-cols-3 gap-6 list-none">
         {trustStats.map((stat, i) => (
-          <StatItem key={stat.label} stat={stat} delay={i * 0.1} inView={inView} />
+          <StatItem key={stat.labelKey} stat={stat} delay={i * 0.1} inView={inView} />
         ))}
       </ul>
     </section>
@@ -125,8 +101,15 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function Download() {
+  const { t } = useTranslation();
+
+  const appLinks = [
+    { store: t('downloadPage.appStore'), platform: t('downloadPage.downloadOn'), icon: appleIcon, subtitle: 'iOS 13+', href: '#' },
+    { store: t('downloadPage.googlePlay'), platform: t('downloadPage.getItOn'), icon: googleIcon, subtitle: t('downloadPage.googlePlaySubtitle'), href: '#' },
+  ];
+
   useEffect(() => {
-    document.title = 'Get the App — LocSho';
+    document.title = t('downloadPage.title') + ' — LocSho';
   }, []);
 
   return (
@@ -154,7 +137,7 @@ export default function Download() {
           <div className="max-w-5xl mx-auto text-center relative z-10">
             <motion.div {...fadeUp(0)}>
               <Badge color="green" className="mb-6">
-                Free Download
+                {t('downloadPage.freeDownload')}
               </Badge>
             </motion.div>
 
@@ -172,14 +155,14 @@ export default function Download() {
               {...fadeUp(0.12)}
               className="text-4xl md:text-5xl font-black text-[#1A1A2E] leading-tight mb-4"
             >
-              Get <span className="text-[#1AAB6D]">LocSho</span> on Your Phone
+              {t('downloadPage.title')}
             </motion.h1>
 
             <motion.p
               {...fadeUp(0.16)}
               className="text-gray-500 text-lg max-w-md mx-auto mb-10"
             >
-              Order from local shops near you. Delivered fresh, fast.
+              {t('downloadPage.subtitle')}
             </motion.p>
 
             {/* CTA buttons */}
@@ -207,15 +190,7 @@ export default function Download() {
             </motion.div>
 
             <motion.p {...fadeUp(0.24)} className="text-gray-400 text-xs mb-12">
-              By downloading you agree to our{' '}
-              <a href="#" className="text-[#1AAB6D] underline-offset-2 hover:underline">
-                Terms of Service
-              </a>{' '}
-              and{' '}
-              <a href="#" className="text-[#1AAB6D] underline-offset-2 hover:underline">
-                Privacy Policy
-              </a>
-              .
+              {t('downloadPage.agreeTerms')}
             </motion.p>
 
             {/* QR codes */}
@@ -224,8 +199,8 @@ export default function Download() {
               className="flex flex-col sm:flex-row gap-8 justify-center"
             >
               {[
-                { label: 'User App', key: 'User' },
-                { label: 'Partner App', key: 'Partner' },
+                { label: t('downloadPage.userApp'), key: 'User' },
+                { label: t('downloadPage.partnerApp'), key: 'Partner' },
               ].map(({ label, key }) => (
                 <figure key={key} className="flex flex-col items-center gap-2">
                   <div className="bg-white p-4 rounded-2xl shadow-md border border-[#1AAB6D]/10">
@@ -259,11 +234,10 @@ export default function Download() {
                 id="steps-heading"
                 className="text-3xl md:text-4xl font-black text-[#1A1A2E]"
               >
-                Up and running in{' '}
-                <span className="text-[#1AAB6D]">3 steps</span>
+                {t('downloadPage.upAndRunning')}
               </h2>
               <p className="text-gray-500 mt-3">
-                From download to first delivery in under 5 minutes.
+                {t('downloadPage.threeStepsDesc')}
               </p>
             </div>
 
@@ -283,8 +257,8 @@ export default function Download() {
                   >
                     {s.step}
                   </span>
-                  <h3 className="text-lg font-bold text-[#1A1A2E] mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="text-lg font-bold text-[#1A1A2E] mb-2">{t(s.titleKey)}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{t(s.descKey)}</p>
                 </motion.li>
               ))}
             </ol>

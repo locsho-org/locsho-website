@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionWrapper from './ui/SectionWrapper';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
@@ -6,16 +7,35 @@ import Button from './ui/Button';
 import { partnerFeatures } from '../data/features';
 
 export default function PartnerFeatures() {
+  const { t } = useTranslation();
+
+  const featureTitles = {
+    'ai-onboarding': t('partnerFeatures.aiOnboarding'),
+    'free-trial': t('partnerFeatures.freeTrial'),
+    'bulk-upload': t('partnerFeatures.bulkUpload'),
+    'whatsapp-alerts': t('partnerFeatures.whatsapp'),
+    'payouts': t('partnerFeatures.dailyPayouts'),
+    'analytics': t('partnerFeatures.analytics'),
+  };
+  const featureDescs = {
+    'ai-onboarding': t('partnerFeatures.aiOnboardingDesc'),
+    'free-trial': t('partnerFeatures.freeTrialDesc'),
+    'bulk-upload': t('partnerFeatures.bulkUploadDesc'),
+    'whatsapp-alerts': t('partnerFeatures.whatsappDesc'),
+    'payouts': t('partnerFeatures.dailyPayoutsDesc'),
+    'analytics': t('partnerFeatures.analyticsDesc'),
+  };
+
   return (
     <SectionWrapper id="partner-features" background="mint">
       <div className="text-center mb-12">
-        <Badge color="green" className="mb-4">For Shop Owners</Badge>
+        <Badge color="green" className="mb-4">{t('partnerFeatures.badge')}</Badge>
         <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
-          Grow Your Shop with{' '}
+          {t('partnerFeatures.title').split('LocSho')[0]}
           <span className="text-[#1AAB6D]">LocSho Partner</span>
         </h2>
         <p className="text-gray-500 max-w-xl mx-auto">
-          Join 78+ local shops already selling online. AI-powered setup, zero upfront costs.
+          {t('partnerFeatures.subtitle')}
         </p>
       </div>
 
@@ -39,12 +59,12 @@ export default function PartnerFeatures() {
                 {feature.icon}
               </div>
               <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="text-base font-bold text-[#1A1A2E]">{feature.title}</h3>
+                <h3 className="text-base font-bold text-[#1A1A2E]">{featureTitles[feature.id] || feature.title}</h3>
                 {feature.highlight && (
-                  <Badge color="green" className="text-[10px] shrink-0">Key</Badge>
+                  <Badge color="green" className="text-[10px] shrink-0">{t('partnerFeatures.key')}</Badge>
                 )}
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
+              <p className="text-gray-500 text-sm leading-relaxed">{featureDescs[feature.id] || feature.description}</p>
             </Card>
           </motion.div>
         ))}
@@ -61,13 +81,13 @@ export default function PartnerFeatures() {
           🏪
         </div>
         <h3 className="text-2xl md:text-3xl font-black text-[#1A1A2E] mb-3">
-          Start Your 15-Day Free Trial
+          {t('partnerFeatures.ctaTitle')}
         </h3>
         <p className="text-gray-500 mb-6 max-w-md mx-auto">
-          No credit card. No setup fee. Just your shop name and a WhatsApp number.
+          {t('partnerFeatures.ctaSubtitle')}
         </p>
         <Button variant="primary" size="lg" href="/partner">
-          Join as Partner →
+          {t('partnerFeatures.ctaButton')}
         </Button>
       </motion.div>
     </SectionWrapper>

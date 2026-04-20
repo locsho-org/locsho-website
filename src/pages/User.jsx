@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Star } from 'lucide-react';
 import SectionWrapper from '../components/ui/SectionWrapper';
 import Button from '../components/ui/Button';
@@ -13,24 +14,25 @@ import { userTestimonials } from '../data/testimonials';
 
 const cn = (...classes) => classes.filter(Boolean).join(' ');
 
-const voiceCartSteps = [
-  { id: 1, lang: 'Hindi', flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
-  { id: 2, lang: 'Processing...', flag: '🤖', speech: 'AI is understanding your request...', items: [] },
-  {
-    id: 3,
-    lang: 'Added to Cart!',
-    flag: '✅',
-    speech: 'Found 3 items from Rajesh General Store',
-    items: [
-      { name: 'Aata (Wheat Flour)', qty: '1 kg',    price: '₹52' },
-      { name: 'Dal (Toor)',         qty: '500 gm',  price: '₹75' },
-      { name: 'Milk Packet',        qty: '2×500ml', price: '₹56' },
-    ],
-  },
-];
-
 function VoiceCartDemo() {
+  const { t } = useTranslation();
   const [step, setStep] = useState(0);
+
+  const voiceCartSteps = [
+    { id: 1, lang: 'Hindi', flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
+    { id: 2, lang: 'Processing...', flag: '🤖', speech: 'AI is understanding your request...', items: [] },
+    {
+      id: 3,
+      lang: t('voiceDemo.addedToCart'),
+      flag: '✅',
+      speech: t('voiceDemo.foundItems'),
+      items: [
+        { name: t('voiceDemo.aata'), qty: '1 kg',    price: '₹52' },
+        { name: t('voiceDemo.dal'),         qty: '500 gm',  price: '₹75' },
+        { name: t('voiceDemo.milkPacket'),        qty: '2×500ml', price: '₹56' },
+      ],
+    },
+  ];
   const [running, setRunning] = useState(false);
 
   const runDemo = () => {
@@ -142,7 +144,7 @@ function VoiceCartDemo() {
         )}
       >
         <span className="relative z-10">
-          {running ? '🎙️ AI Processing...' : step === 3 ? '🔄 Reset Demo' : '🎤 Try Voice Ordering'}
+          {running ? t('userPage.aiProcessing') : step === 3 ? t('userPage.resetDemo') : t('userPage.tryVoice')}
         </span>
         {!running && (
           <motion.div 
@@ -157,16 +159,18 @@ function VoiceCartDemo() {
   );
 }
 
-const userSteps = [
-  { step: 1, icon: '📍', title: 'Find Nearby Shops',        desc: 'Browse grocery stores, vegetable vendors, dairy shops and more.' },
-  { step: 2, icon: '🛒', title: 'Quick Add to Cart',  desc: 'Search products or use voice to build your list in seconds.' },
-  { step: 3, icon: '📲', title: 'Direct to Shop',       desc: 'Send orders to shopkeepers directly. Pay via UPI on delivery.' },
-  { step: 4, icon: '🚚', title: 'Fast Delivery', desc: 'Get rapid local delivery or skip the queue with store pickup.' },
-];
-
 export default function User() {
+  const { t } = useTranslation();
+
+  const userSteps = [
+    { step: 1, icon: '📍', titleKey: 'userPage.step1',  desc: t('userSteps.step1Desc') },
+    { step: 2, icon: '🛒', titleKey: 'userPage.step2',  desc: t('userSteps.step2Desc') },
+    { step: 3, icon: '📲', titleKey: 'userPage.step3',  desc: t('userSteps.step3Desc') },
+    { step: 4, icon: '🚚', titleKey: 'userPage.step4',  desc: t('userSteps.step4Desc') },
+  ];
+
   useEffect(() => {
-    document.title = 'LocSho — Fast Local Delivery from Shops You Trust';
+    document.title = 'LocSho — ' + t('userPage.subtitle');
   }, []);
 
   return (
@@ -185,23 +189,22 @@ export default function User() {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <Badge color="green" className="mb-6 py-1.5 px-4 text-xs font-black uppercase tracking-[0.2em]">New Era of Shopping</Badge>
+            <Badge color="green" className="mb-6 py-1.5 px-4 text-xs font-black uppercase tracking-[0.2em]">{t('userPage.title')}</Badge>
             <h1 className="text-5xl md:text-7xl font-black text-[#1A1A2E] mb-6 leading-[1.1] tracking-tighter">
-              Order from shops <br/>
               <span className="text-[#1AAB6D] relative">
-                you already trust.
+                {t('userPage.subtitle')}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 358 12" fill="none">
                   <path d="M3 9C118.5 3 239.5 3 355 9" stroke="#1AAB6D" strokeWidth="6" strokeLinecap="round" opacity="0.2"/>
                 </svg>
               </span>
             </h1>
             <p className="text-gray-500 text-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-              Groceries, vegetables, and daily essentials delivered from your neighborhood stores. No middleman, direct prices, local trust.
+              {t('userPage.desc')}
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
               <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" href="/download">
-                Start Ordering
+                {t('userPage.startOrdering')}
               </Button>
               <div className="flex -space-x-3 items-center">
                 {[1, 2, 3, 4].map(i => (
@@ -209,22 +212,22 @@ export default function User() {
                     <img src={`https://placehold.co/100x100/1AAB6D/ffffff?text=${i}`} alt="" />
                   </div>
                 ))}
-                <span className="ml-6 text-sm font-bold text-[#1A1A2E]">50k+ Users</span>
+                <span className="ml-6 text-sm font-bold text-[#1A1A2E]">{t('userPage.users')}</span>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-8 border-t border-gray-100 pt-10 max-w-md mx-auto lg:mx-0">
               <div>
                 <p className="text-2xl font-black text-[#1A1A2E]">500+</p>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Partner Shops</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{t('userPage.partnerShops')}</p>
               </div>
               <div>
                 <p className="text-2xl font-black text-[#1A1A2E]">10min</p>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Delivery Time</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{t('userPage.deliveryTime')}</p>
               </div>
               <div>
                 <p className="text-2xl font-black text-[#1A1A2E]">₹2</p>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Start Charge</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{t('userPage.startCharge')}</p>
               </div>
             </div>
           </motion.div>
@@ -284,9 +287,9 @@ export default function User() {
       {/* Modern How It Works */}
       <SectionWrapper background="mint">
         <div className="text-center mb-16">
-          <Badge color="green" className="mb-4">Simplified Process</Badge>
+          <Badge color="green" className="mb-4">{t('userPage.simplifiedProcess')}</Badge>
           <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] tracking-tight">
-            As easy as <span className="text-[#1AAB6D]">1-2-3-4</span>
+            {t('userPage.asEasy')}
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -306,7 +309,7 @@ export default function User() {
                   <div className="w-16 h-16 bg-[#F0FBF5] rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">
                     {s.icon}
                   </div>
-                  <h3 className="text-lg font-black text-[#1A1A2E] mb-3 uppercase tracking-tight">{s.title}</h3>
+                  <h3 className="text-lg font-black text-[#1A1A2E] mb-3 uppercase tracking-tight">{t(s.titleKey)}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed font-medium">{s.desc}</p>
                 </Card>
               </div>
@@ -319,12 +322,12 @@ export default function User() {
       <SectionWrapper background="white" className="relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#1AAB6D] opacity-[0.02] rounded-full blur-3xl" />
         <div className="text-center mb-16 max-w-4xl mx-auto">
-          <Badge color="green" className="mb-4">AI-First Experience</Badge>
+          <Badge color="green" className="mb-4">{t('userPage.aiFirst')}</Badge>
           <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] mb-6 tracking-tight">
-            Order with <span className="text-[#1AAB6D]">Your Voice</span>
+            {t('userPage.orderWithVoice')}
           </h2>
           <p className="text-gray-500 text-lg font-medium leading-relaxed">
-            Speak your grocery list in Hindi, Telugu, Tamil, or English. Our AI parses every item and finds it at your favorite local store instantly.
+            {t('userPage.voiceDesc')}
           </p>
         </div>
         <VoiceCartDemo />
@@ -333,9 +336,9 @@ export default function User() {
       {/* Social Proof Section */}
       <SectionWrapper background="gray">
         <div className="text-center mb-16">
-          <Badge color="green" className="mb-4">Happy Customers</Badge>
+          <Badge color="green" className="mb-4">{t('userPage.happyCustomers')}</Badge>
           <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] tracking-tight">
-            What our <span className="text-[#1AAB6D]">Users say</span>
+            {t('userPage.whatUsersSay')}
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -375,12 +378,12 @@ export default function User() {
       <SectionWrapper background="white">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-16">
-            <Badge color="green" className="mb-4">Visual Tour</Badge>
+            <Badge color="green" className="mb-4">{t('userPage.visualTour')}</Badge>
             <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] mb-6 tracking-tight">
-              See the <span className="text-[#1AAB6D]">App in Action</span>
+              {t('userPage.seeApp')}
             </h2>
             <p className="text-gray-500 text-lg max-w-4xl mx-auto font-medium">
-              Join 50,000+ users who have discovered a better way to shop local.
+              {t('userPage.joinUsers')}
             </p>
           </div>
 
@@ -405,9 +408,9 @@ export default function User() {
 
           <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button variant="primary" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black shadow-xl shadow-[#1AAB6D]/20" href="/download">
-              Download App Now
+              {t('userPage.downloadNow')}
             </Button>
-            <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">Free forever for users</p>
+            <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">{t('userPage.freeForever')}</p>
           </div>
         </div>
       </SectionWrapper>
@@ -421,13 +424,13 @@ export default function User() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="text-6xl mb-8">🏪</div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-            Missing Your <span className="text-[#1AAB6D]">Favorite Shop?</span>
+            {t('userPage.missingShop')}
           </h2>
           <p className="text-gray-300 text-lg mb-10 font-medium leading-relaxed">
-            Tell us which shop you want to see on LocSho. We'll invite them to join the digital revolution.
+            {t('userPage.missingShopDesc')}
           </p>
           <Button variant="white" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black" href="/contact">
-            Request a Shop
+            {t('userPage.requestShop')}
           </Button>
         </div>
       </SectionWrapper>

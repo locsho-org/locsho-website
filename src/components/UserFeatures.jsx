@@ -1,19 +1,36 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionWrapper from './ui/SectionWrapper';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
 import { userFeatures } from '../data/features';
 
 export default function UserFeatures() {
+  const { t } = useTranslation();
+
+  const featureTitles = {
+    'voice-cart': t('userFeatures.voiceCart'),
+    'multilang': t('userFeatures.multiLang'),
+    'gps-shops': t('userFeatures.gps'),
+    'live-tracking': t('userFeatures.tracking'),
+  };
+  const featureDescs = {
+    'voice-cart': t('userFeatures.voiceCartDesc'),
+    'multilang': t('userFeatures.multiLangDesc'),
+    'gps-shops': t('userFeatures.gpsDesc'),
+    'live-tracking': t('userFeatures.trackingDesc'),
+  };
+
   return (
     <SectionWrapper id="user-features" background="white">
       <div className="text-center mb-12">
-        <Badge color="green" className="mb-4">For Customers</Badge>
+        <Badge color="green" className="mb-4">{t('userFeatures.badge')}</Badge>
         <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
-          Shopping Made <span className="text-[#1AAB6D]">Effortless</span>
+          {t('userFeatures.title').split(' ').slice(0, -1).join(' ')}{' '}
+          <span className="text-[#1AAB6D]">{t('userFeatures.title').split(' ').pop()}</span>
         </h2>
         <p className="text-gray-500 max-w-xl mx-auto">
-          Everything you need to order from local shops — fast, simple, in your language.
+          {t('userFeatures.subtitle')}
         </p>
       </div>
 
@@ -37,12 +54,12 @@ export default function UserFeatures() {
                 {feature.icon}
               </div>
               <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="text-base font-bold text-[#1A1A2E]">{feature.title}</h3>
+                <h3 className="text-base font-bold text-[#1A1A2E]">{featureTitles[feature.id] || feature.title}</h3>
                 {feature.highlight && (
-                  <Badge color="green" className="text-[10px] shrink-0">Popular</Badge>
+                  <Badge color="green" className="text-[10px] shrink-0">{t('userFeatures.popular')}</Badge>
                 )}
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
+              <p className="text-gray-500 text-sm leading-relaxed">{featureDescs[feature.id] || feature.description}</p>
             </Card>
           </motion.div>
         ))}

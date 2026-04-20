@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { demoVideos } from '../data/media';
 
-const ORDER_ITEMS = [
-  { name: 'Aata (1 kg)', price: '₹52' },
-  { name: 'Toor Dal (500g)', price: '₹75' },
-  { name: 'Milk (2 pkt)', price: '₹56' },
+const ORDER_ITEMS_EN = [
+  { nameKey: 'orderDemo.aata', price: '₹52' },
+  { nameKey: 'orderDemo.toorDal', price: '₹75' },
+  { nameKey: 'orderDemo.milk', price: '₹56' },
 ];
 
 // ── State durations (ms) ──────────────────────────────────────────────────────
@@ -45,6 +46,8 @@ function PhoneFrame({ children }) {
 
 // ── Screen: Incoming order ────────────────────────────────────────────────────
 function IncomingScreen() {
+  const { t } = useTranslation();
+  const ORDER_ITEMS = ORDER_ITEMS_EN.map(item => ({ name: t(item.nameKey), price: item.price }));
   return (
     <motion.div
       key="incoming"
@@ -94,6 +97,8 @@ function IncomingScreen() {
 
 // ── Screen: Order accepted ────────────────────────────────────────────────────
 function AcceptedScreen() {
+  const { t } = useTranslation();
+  const ORDER_ITEMS = ORDER_ITEMS_EN.map(item => ({ name: t(item.nameKey), price: item.price }));
   return (
     <motion.div
       key="accepted"
@@ -167,6 +172,8 @@ function ReadyScreen() {
 
 // ── Main export ───────────────────────────────────────────────────────────────
 export default function OrderNotificationDemo() {
+  const { t } = useTranslation();
+  const ORDER_ITEMS = ORDER_ITEMS_EN.map(item => ({ name: t(item.nameKey), price: item.price }));
   const ref = useRef(null);
   const inView = useInView(ref, { once: false, margin: '-80px' });
   const [state, setState] = useState(0);
@@ -186,9 +193,9 @@ export default function OrderNotificationDemo() {
   }, [inView, state]);
 
   const labels = [
-    'New order arriving...',
-    'Shopkeeper accepted',
-    'Customer notified ✅',
+    t('orderDemo.newOrderArriving'),
+    t('orderDemo.shopkeeperAccepted'),
+    t('orderDemo.customerNotified'),
   ];
 
   // ── Video mode (swap null in media.js to enable) ──────────────────────────

@@ -1,12 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Button from './ui/Button';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const toggleLang = () => {
+    const next = i18n.language === 'en' ? 'hi' : 'en';
+    i18n.changeLanguage(next);
+    localStorage.setItem('lang', next);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -19,8 +27,8 @@ export default function Navbar() {
   }, [location]);
 
   const navLinks = [
-    { label: 'For User', to: '/user' },
-    { label: 'For Shopkeeper', to: '/partner' },
+    { label: t('nav.forUser'), to: '/user' },
+    { label: t('nav.forShopkeeper'), to: '/partner' },
   ];
 
   return (
@@ -55,14 +63,29 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          {/* Language switcher */}
+          <button
+            onClick={toggleLang}
+            className="px-3 py-1.5 text-xs font-bold border border-gray-200 rounded-full hover:bg-gray-50 transition-all"
+          >
+            {i18n.language === 'en' ? '🇮🇳 हिंदी' : '🌐 English'}
+          </button>
+
           <Button variant="primary" size="sm" href="/download">
-            Get App
+            {t('nav.getApp')}
           </Button>
         </div>
 
         {/* Mobile hamburger */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="px-2 py-1 text-[10px] font-bold border border-gray-200 rounded-full"
+          >
+            {i18n.language === 'en' ? 'हिं' : 'EN'}
+          </button>
         <button
-          className="md:hidden p-2 flex flex-col gap-1.5"
+          className="p-2 flex flex-col gap-1.5"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -70,6 +93,7 @@ export default function Navbar() {
           <span className="w-6 h-0.5 bg-gray-700 block transition-all" />
           <span className="w-6 h-0.5 bg-gray-700 block transition-all" />
         </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -96,7 +120,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Button variant="primary" size="sm" href="/download">
-                Get App
+                {t('nav.getApp')}
               </Button>
             </div>
           </motion.div>

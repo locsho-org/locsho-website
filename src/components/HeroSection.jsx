@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
 import PhoneMockup from './ui/PhoneMockup';
@@ -41,6 +42,8 @@ const fadeUp = {
 };
 
 export default function HeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen bg-[#F0FBF5] flex items-center overflow-hidden">
       {/* Concentric circle decorations — matching user app */}
@@ -74,7 +77,7 @@ export default function HeroSection() {
           >
             <motion.div variants={fadeUp}>
               <Badge color="green" className="mb-6">
-                🚀 Greater Noida Pilot — Now Live
+                {t('hero.badge')}
               </Badge>
             </motion.div>
 
@@ -82,18 +85,15 @@ export default function HeroSection() {
               variants={fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1A1A2E] leading-tight mb-6"
             >
-              Hyperlocal Delivery{' '}
-              <span className="text-[#1AAB6D]">at Your Doorstep</span>
+              {t('hero.title1')}{' '}
+              <span className="text-[#1AAB6D]">{t('hero.title2')}</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="text-lg text-gray-500 mb-8 max-w-lg mx-auto md:mx-0"
-            >
-              Order from your neighbourhood shops in your language — delivered in{' '}
-              <strong className="text-[#1A1A2E]">30 minutes</strong> for just{' '}
-              <strong className="text-[#1AAB6D]">₹2</strong>. Supporting local shops.
-            </motion.p>
+              dangerouslySetInnerHTML={{ __html: t('hero.subtitle') }}
+            />
 
             {/* Regional language tags */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-2 justify-center md:justify-start mb-8">
@@ -112,10 +112,10 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
               <Button variant="primary" size="lg" href="/download">
-                📱 Download App
+                {t('hero.downloadApp')}
               </Button>
               <Button variant="outline" size="lg" href="/partner">
-                🏪 List Your Shop
+                {t('hero.listShop')}
               </Button>
             </motion.div>
 
@@ -123,11 +123,11 @@ export default function HeroSection() {
               variants={fadeUp}
               className="mt-8 flex items-center gap-6 justify-center md:justify-start text-sm text-gray-400"
             >
-              <span className="flex items-center gap-1"><span className="text-yellow-400">⭐</span> 4.8 Rating</span>
+              <span className="flex items-center gap-1"><span className="text-yellow-400">⭐</span> {t('hero.rating')}</span>
               <span>•</span>
-              <span>78+ Shops</span>
+              <span>{t('hero.shops')}</span>
               <span>•</span>
-              <span>500+ Orders</span>
+              <span>{t('hero.orders')}</span>
             </motion.div>
           </motion.div>
 
@@ -155,8 +155,8 @@ export default function HeroSection() {
               >
                 <span className="text-lg">🚚</span>
                 <div>
-                  <p className="text-xs font-bold text-[#1A1A2E]">Fast Delivery</p>
-                  <p className="text-xs text-[#1AAB6D] font-semibold">30 min</p>
+                  <p className="text-xs font-bold text-[#1A1A2E]">{t('hero.fastDelivery')}</p>
+                  <p className="text-xs text-[#1AAB6D] font-semibold">{t('hero.thirtyMin')}</p>
                 </div>
               </motion.div>
 
@@ -169,8 +169,8 @@ export default function HeroSection() {
               >
                 <span className="text-lg">💰</span>
                 <div>
-                  <p className="text-xs font-bold text-[#1A1A2E]">₹2 delivery</p>
-                  <p className="text-xs text-gray-400">Flat fee</p>
+                  <p className="text-xs font-bold text-[#1A1A2E]">{t('hero.deliveryFee')}</p>
+                  <p className="text-xs text-gray-400">{t('hero.flatFee')}</p>
                 </div>
               </motion.div>
             </div>

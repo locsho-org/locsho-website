@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionWrapper from './ui/SectionWrapper';
 import Badge from './ui/Badge';
 import Button from './ui/Button';
 import { customerPricing, partnerPricing } from '../data/pricing';
 
 function PricingCard({ plan, delay = 0 }) {
-  const isPartner = plan.price !== 'Free';
+  const isPartner = plan.isPartner;
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -70,21 +71,49 @@ function PricingCard({ plan, delay = 0 }) {
 }
 
 export default function PricingTable() {
+  const { t } = useTranslation();
+
+  const translatedCustomer = {
+    ...customerPricing,
+    title: t('pricing.forCustomers'),
+    price: t('pricing.free'),
+    subtitle: t('pricing.alwaysFree'),
+    cta: t('pricing.downloadApp'),
+    features: t('pricing.customerFeatures', { returnObjects: true }).map((text, i) => ({
+      text,
+      highlight: customerPricing.features[i]?.highlight,
+    })),
+  };
+
+  const translatedPartner = {
+    ...partnerPricing,
+    isPartner: true,
+    title: t('pricing.forShopOwners'),
+    price: t('pricing.price'),
+    subtitle: t('pricing.priceNote'),
+    cta: t('pricing.startTrial'),
+    badge: t('pricing.trialBadge'),
+    features: t('pricing.partnerFeatures', { returnObjects: true }).map((text, i) => ({
+      text,
+      highlight: partnerPricing.features[i]?.highlight,
+    })),
+  };
+
   return (
     <SectionWrapper id="pricing" background="white">
       <div className="text-center mb-12">
-        <Badge color="green" className="mb-4">Pricing</Badge>
+        <Badge color="green" className="mb-4">{t('pricing.badge')}</Badge>
         <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
-          Simple, <span className="text-[#1AAB6D]">Transparent</span> Pricing
+          {t('pricing.title').split(',')[0]}, <span className="text-[#1AAB6D]">{t('pricing.title').split(',')[1]?.trim().split(' ')[0]}</span> {t('pricing.title').split(',')[1]?.trim().split(' ').slice(1).join(' ')}
         </h2>
         <p className="text-gray-500 max-w-lg mx-auto">
-          No hidden fees. No surprises. Just straightforward pricing for customers and shop owners.
+          {t('pricing.subtitle')}
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-        <PricingCard plan={customerPricing} delay={0} />
-        <PricingCard plan={partnerPricing} delay={0.15} />
+        <PricingCard plan={translatedCustomer} delay={0} />
+        <PricingCard plan={translatedPartner} delay={0.15} />
       </div>
     </SectionWrapper>
   );

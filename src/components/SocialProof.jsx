@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionWrapper from './ui/SectionWrapper';
 import Badge from './ui/Badge';
 import { stats } from '../data/stats';
@@ -32,16 +33,25 @@ function AnimatedCounter({ value, suffix, isInView }) {
 export default function SocialProof() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const { t } = useTranslation();
+
+  const statLabels = {
+    shops: t('socialProof.shops'),
+    orders: t('socialProof.ordersDelivered'),
+    rating: t('socialProof.avgRating'),
+    delivery: t('socialProof.avgDelivery'),
+  };
 
   return (
     <SectionWrapper id="social-proof" background="mint">
       <div className="text-center mb-12">
-        <Badge color="green" className="mb-4">Greater Noida Pilot</Badge>
+        <Badge color="green" className="mb-4">{t('socialProof.badge')}</Badge>
         <h2 className="text-3xl md:text-4xl font-black text-[#1A1A2E] mb-4">
-          Growing Every <span className="text-[#1AAB6D]">Single Day</span>
+          {t('socialProof.title').split(' ').slice(0, -2).join(' ')}{' '}
+          <span className="text-[#1AAB6D]">{t('socialProof.title').split(' ').slice(-2).join(' ')}</span>
         </h2>
         <p className="text-gray-500 max-w-lg mx-auto">
-          Started in Sector 62, now expanding across Greater Noida. Real numbers, real shops, real deliveries.
+          {t('socialProof.subtitle')}
         </p>
       </div>
 
@@ -60,7 +70,7 @@ export default function SocialProof() {
             <div className="text-3xl md:text-4xl font-black text-[#1AAB6D] mb-1">
               <AnimatedCounter value={stat.value} suffix={stat.suffix} isInView={isInView} />
             </div>
-            <p className="text-[#1A1A2E] text-sm font-semibold">{stat.label}</p>
+            <p className="text-[#1A1A2E] text-sm font-semibold">{statLabels[stat.id] || stat.label}</p>
             <p className="text-gray-400 text-xs mt-1">{stat.description}</p>
           </motion.div>
         ))}
@@ -69,9 +79,9 @@ export default function SocialProof() {
       {/* Trust indicators */}
       <div className="grid md:grid-cols-3 gap-6">
         {[
-          { icon: '🔒', title: 'Secure Payments', desc: 'UPI, cards, wallets — all PCI-DSS compliant' },
-          { icon: '📍', title: 'Verified Shops Only', desc: 'Every partner shop is physically verified' },
-          { icon: '🤝', title: 'Local-first Mission', desc: 'Built to empower Greater Noida shop owners' },
+          { icon: '🔒', title: t('socialProof.securePayments'), desc: t('socialProof.securePaymentsDesc') },
+          { icon: '📍', title: t('socialProof.verifiedShops'), desc: t('socialProof.verifiedShopsDesc') },
+          { icon: '🤝', title: t('socialProof.localFirst'), desc: t('socialProof.localFirstDesc') },
         ].map((item, i) => (
           <motion.div
             key={i}
