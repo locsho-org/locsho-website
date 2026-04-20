@@ -46,9 +46,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-[#1AAB6D] rounded-xl flex items-center justify-center text-white font-black text-lg shadow-lg shadow-green-900/10">
-                L
-              </div>
+              <img src="/logo.png" alt="Locsho" className="w-10 h-10 rounded-xl shadow-lg shadow-green-900/10" />
               <span className="font-black text-2xl text-[#1A1A2E] tracking-tighter">
                 Loc<span className="text-[#1AAB6D]">sho</span>
               </span>
