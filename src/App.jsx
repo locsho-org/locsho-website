@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import User from './pages/User';
 import Partner from './pages/Partner';
+import PartnerLogin from './pages/PartnerLogin';
 import Download from './pages/Download';
 import NotFound from './pages/NotFound';
 
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/" element={<Navigate to="/user" replace />} />
         <Route path="/user" element={<User />} />
         <Route path="/partner" element={<Partner />} />
+        <Route path="/partner/login" element={<PartnerLogin />} />
         <Route path="/download" element={<Download />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

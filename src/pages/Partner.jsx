@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import SectionWrapper from '../components/ui/SectionWrapper';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
@@ -42,6 +43,7 @@ const pricingPlans = [
 
 export default function Partner() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'LocSho Partner — ' + t('partnerPage.subtitle');
@@ -248,7 +250,7 @@ export default function Partner() {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.highlight ? 'primary' : 'outline'} size="lg" className="w-full h-14 rounded-2xl uppercase tracking-widest font-black text-xs">
+                <Button variant={plan.highlight ? 'primary' : 'outline'} size="lg" className="w-full h-14 rounded-2xl uppercase tracking-widest font-black text-xs" onClick={() => navigate('/partner/login')}>
                   {t(plan.ctaKey)}
                 </Button>
               </Card>

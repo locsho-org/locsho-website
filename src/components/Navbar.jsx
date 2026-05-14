@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { LogIn } from 'lucide-react';
 import Button from './ui/Button';
 
 export default function Navbar() {
@@ -9,6 +10,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const isPartnerPage = location.pathname === '/partner';
 
   const toggleLang = () => {
     const next = i18n.language === 'en' ? 'hi' : 'en';
@@ -71,6 +73,16 @@ export default function Navbar() {
             {i18n.language === 'en' ? '🇮🇳 हिंदी' : '🌐 English'}
           </button>
 
+          {isPartnerPage && (
+            <Link
+              to="/partner/login"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
+            >
+              <LogIn size={14} strokeWidth={2.5} />
+              Partner Login
+            </Link>
+          )}
+
           <Button variant="primary" size="sm" href="/download">
             {t('nav.getApp')}
           </Button>
@@ -119,6 +131,15 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              {isPartnerPage && (
+                <Link
+                  to="/partner/login"
+                  className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
+                >
+                  <LogIn size={14} strokeWidth={2.5} />
+                  Partner Login
+                </Link>
+              )}
               <Button variant="primary" size="sm" href="/download">
                 {t('nav.getApp')}
               </Button>
