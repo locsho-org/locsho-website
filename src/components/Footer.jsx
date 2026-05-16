@@ -12,7 +12,7 @@ const openAppStore = () => {
   window.open(
     isIOS
       ? 'https://apps.apple.com/app/locsho/id6744042655'
-      : 'https://play.google.com/store/apps/details?id=in.locsho',
+      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
     '_blank'
   );
 };
