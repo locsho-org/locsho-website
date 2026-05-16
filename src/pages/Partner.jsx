@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+
 import SectionWrapper from '../components/ui/SectionWrapper';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Footer from '../components/Footer';
 import Badge from '../components/ui/Badge';
-import { testimonials } from '../data/testimonials';
+
 import OrderNotificationDemo from '../components/OrderNotificationDemo';
 import PhoneMockup from '../components/ui/PhoneMockup';
 import { demoVideos } from '../data/media';
@@ -43,7 +43,6 @@ const pricingPlans = [
 
 export default function Partner() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'LocSho Partner — ' + t('partnerPage.subtitle');
@@ -88,10 +87,13 @@ export default function Partner() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" href="/download">
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://partner.locsho.in/login', '_blank')}>
                 {t('partnerPage.registerShop')}
               </Button>
-              <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" href="/download">
+              <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => {
+                const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+                window.open(isIOS ? 'https://apps.apple.com/app/locsho-partner/id6744042655' : 'https://play.google.com/store/apps/details?id=in.locsho.partner', '_blank');
+              }}>
                 {t('footer.downloadApp')}
               </Button>
             </div>
@@ -167,8 +169,6 @@ export default function Partner() {
           <div className="bg-[#F0FBF5] rounded-[3rem] p-12 border border-[#1AAB6D]/10 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-8 text-8xl opacity-[0.03] group-hover:scale-110 transition-transform">🏪</div>
             <div className="text-center">
-              <p className="text-5xl font-black text-[#1AAB6D] mb-2 tracking-tighter">500+</p>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-8">{t('partnerPage.registeredShops')}</p>
               <p className="text-gray-600 font-medium italic">"{t('partnerPage.testimonial')}"</p>
               <p className="mt-4 font-bold text-[#1A1A2E]">— {t('partnerPage.testimonialAuthor')}</p>
             </div>
@@ -219,91 +219,9 @@ export default function Partner() {
         </div>
       </SectionWrapper>
 
-      {/* Pricing Section */}
-      <SectionWrapper background="gray">
-        <div className="max-w-5xl mx-auto text-center">
-          <Badge color="green" className="mb-4">{t('partnerPage.simplePricing')}</Badge>
-          <h2 className="text-4xl font-black text-[#1A1A2E] mb-6 uppercase tracking-tight">
-            {t('partnerPage.builtForProfit')}
-          </h2>
-          <p className="text-gray-500 text-lg mb-12 max-w-xl mx-auto">
-            {t('partnerPage.pricingDesc')}
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {pricingPlans.map(plan => (
-              <Card key={plan.nameKey} className={`text-left p-10 rounded-[2.5rem] flex flex-col relative ${plan.highlight ? 'border-4 border-[#1AAB6D] shadow-2xl shadow-green-900/10' : 'border border-gray-100'}`}>
-                {plan.highlight && (
-                  <div className="absolute top-0 right-10 -translate-y-1/2 bg-[#1AAB6D] text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">{t('partnerPage.recommended')}</div>
-                )}
-                <h3 className="text-xl font-black text-[#1A1A2E] uppercase tracking-widest mb-2">{t(plan.nameKey)}</h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-black text-[#1A1A2E] tracking-tighter">{t(plan.priceKey)}</span>
-                  <span className="text-gray-400 text-sm font-bold">{t(plan.periodKey)}</span>
-                </div>
-                <p className="text-gray-500 text-sm font-medium mb-8">{t(plan.descKey)}</p>
-                <ul className="space-y-4 mb-10 flex-1">
-                  {t(plan.featuresKey, { returnObjects: true }).map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm font-bold text-[#1A1A2E]">
-                      <span className="text-[#1AAB6D]">✓</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Button variant={plan.highlight ? 'primary' : 'outline'} size="lg" className="w-full h-14 rounded-2xl uppercase tracking-widest font-black text-xs" onClick={() => navigate('/partner/login')}>
-                  {t(plan.ctaKey)}
-                </Button>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
+      {/* Pricing Section — hidden */}
 
-      {/* Real Results Testimonials */}
-      <SectionWrapper background="white">
-        <div className="text-center mb-16">
-          <Badge color="green" className="mb-4">{t('partnerPage.partnerSuccess')}</Badge>
-          <h2 className="text-4xl font-black text-[#1A1A2E] uppercase tracking-tight">
-            {t('partnerPage.realResults')}
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className="h-full border border-gray-50 p-8 rounded-[2rem] hover:shadow-xl transition-all">
-                <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-[#1AAB6D]/10">
-                    <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-black text-[#1A1A2E] text-base uppercase tracking-tight">{t.name}</p>
-                    <p className="text-[10px] font-black text-[#1AAB6D] uppercase tracking-widest">{t.shop}</p>
-                    <p className="text-[10px] font-bold text-gray-400 mt-1">{t.location}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 font-medium italic leading-relaxed text-base mb-6">"{t.quote}"</p>
-                <div className="flex items-center gap-4 pt-6 border-t border-gray-50">
-                  <div className="flex flex-col">
-                    <span className="text-lg font-black text-[#1A1A2E] tracking-tight">{t.ordersPerDay}</span>
-                    <span className="text-[8px] font-black uppercase text-gray-400 tracking-widest">Orders / Day</span>
-                  </div>
-                  <div className="w-px h-8 bg-gray-100" />
-                  <div className="flex flex-col">
-                    <span className="text-lg font-black text-[#1AAB6D] tracking-tight">{t.monthlyEarnings}</span>
-                    <span className="text-[8px] font-black uppercase text-gray-400 tracking-widest">Monthly Growth</span>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </SectionWrapper>
+      {/* Real Results Testimonials — hidden */}
 
       {/* Final CTA */}
       <SectionWrapper background="dark" className="relative overflow-hidden">
@@ -318,7 +236,7 @@ export default function Partner() {
           <p className="text-gray-300 text-lg mb-10 max-w-md mx-auto font-medium">
             {t('partnerPage.claimDesc')}
           </p>
-          <Button variant="primary" size="xl" className="h-20 px-12 rounded-[2rem] text-lg tracking-[0.2em] uppercase font-black shadow-2xl shadow-[#1AAB6D]/20" href="/download">
+          <Button variant="primary" size="xl" className="h-20 px-12 rounded-[2rem] text-lg tracking-[0.2em] uppercase font-black shadow-2xl shadow-[#1AAB6D]/20" onClick={() => window.open('https://partner.locsho.in/login', '_blank')}>
             {t('partnerPage.registerShop')}
           </Button>
           <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em] mt-8">{t('partnerPage.limitedSlots')}</p>
