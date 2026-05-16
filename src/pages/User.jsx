@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Star } from 'lucide-react';
 import SectionWrapper from '../components/ui/SectionWrapper';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
@@ -10,7 +9,16 @@ import UserFeatures from '../components/UserFeatures';
 import PhoneMockup from '../components/ui/PhoneMockup';
 import Badge from '../components/ui/Badge';
 import { demoVideos } from '../data/media';
-import { userTestimonials } from '../data/testimonials';
+
+const openAppStore = () => {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  window.open(
+    isIOS
+      ? 'https://apps.apple.com/app/locsho/id6744042655'
+      : 'https://play.google.com/store/apps/details?id=in.locsho',
+    '_blank'
+  );
+};
 
 const cn = (...classes) => classes.filter(Boolean).join(' ');
 
@@ -203,32 +211,9 @@ export default function User() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" href="/download">
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
                 {t('userPage.startOrdering')}
               </Button>
-              <div className="flex -space-x-3 items-center">
-                {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center overflow-hidden">
-                    <img src={`https://placehold.co/100x100/1AAB6D/ffffff?text=${i}`} alt="" />
-                  </div>
-                ))}
-                <span className="ml-6 text-sm font-bold text-[#1A1A2E]">{t('userPage.users')}</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-8 border-t border-gray-100 pt-10 max-w-md mx-auto lg:mx-0">
-              <div>
-                <p className="text-2xl font-black text-[#1A1A2E]">500+</p>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{t('userPage.partnerShops')}</p>
-              </div>
-              <div>
-                <p className="text-2xl font-black text-[#1A1A2E]">10min</p>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{t('userPage.deliveryTime')}</p>
-              </div>
-              <div>
-                <p className="text-2xl font-black text-[#1A1A2E]">₹2</p>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{t('userPage.startCharge')}</p>
-              </div>
             </div>
           </motion.div>
 
@@ -333,47 +318,6 @@ export default function User() {
         <VoiceCartDemo />
       </SectionWrapper>
 
-      {/* Social Proof Section */}
-      <SectionWrapper background="gray">
-        <div className="text-center mb-16">
-          <Badge color="green" className="mb-4">{t('userPage.happyCustomers')}</Badge>
-          <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] tracking-tight">
-            {t('userPage.whatUsersSay')}
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {userTestimonials.map((t, i) => (
-            <motion.div
-              key={t.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-xl shadow-gray-200/20 h-full flex flex-col">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#1AAB6D]/20 p-0.5">
-                    <img src={t.avatar} alt={t.name} className="w-full h-full rounded-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="font-black text-[#1A1A2E] text-sm uppercase tracking-wider">{t.name}</p>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t.location}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 font-medium italic leading-relaxed text-base flex-1">
-                  "{t.quote}"
-                </p>
-                <div className="mt-6 pt-6 border-t border-gray-50 flex items-center gap-1 text-[#1AAB6D]">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} size={14} fill="currentColor" />
-                  ))}
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </SectionWrapper>
-
       {/* Video Demo Section */}
       <SectionWrapper background="white">
         <div className="max-w-5xl mx-auto text-center">
@@ -383,7 +327,7 @@ export default function User() {
               {t('userPage.seeApp')}
             </h2>
             <p className="text-gray-500 text-lg max-w-4xl mx-auto font-medium">
-              {t('userPage.joinUsers')}
+              Shop directly from nearby stores — no middlemen, no confusion.
             </p>
           </div>
 
@@ -407,7 +351,7 @@ export default function User() {
           </div>
 
           <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button variant="primary" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black shadow-xl shadow-[#1AAB6D]/20" href="/download">
+            <Button variant="primary" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black shadow-xl shadow-[#1AAB6D]/20" onClick={openAppStore}>
               {t('userPage.downloadNow')}
             </Button>
             <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">{t('userPage.freeForever')}</p>

@@ -5,12 +5,23 @@ import { useTranslation } from 'react-i18next';
 import { LogIn } from 'lucide-react';
 import Button from './ui/Button';
 
+const openAppStore = () => {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  window.open(
+    isIOS
+      ? 'https://apps.apple.com/app/locsho/id6744042655'
+      : 'https://play.google.com/store/apps/details?id=in.locsho',
+    '_blank'
+  );
+};
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const isPartnerPage = location.pathname === '/partner';
+  const isUserPage = location.pathname === '/user' || location.pathname === '/';
 
   const toggleLang = () => {
     const next = i18n.language === 'en' ? 'hi' : 'en';
@@ -45,8 +56,8 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="Locsho" className="w-8 h-8 rounded-lg" />
-          <span className="font-black text-xl text-[#1A1A2E]">
-            Loc<span className="text-[#1AAB6D]">sho</span>
+          <span className="font-black text-xl">
+            <span className="text-[#1AAB6D]">Loc</span><span className="text-[#F59E0B]">Sho</span>
           </span>
         </Link>
 
@@ -73,17 +84,31 @@ export default function Navbar() {
             {i18n.language === 'en' ? '🇮🇳 हिंदी' : '🌐 English'}
           </button>
 
+          {isUserPage && (
+            <a
+              href="https://user.locsho.in/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
+            >
+              <LogIn size={14} strokeWidth={2.5} />
+              User Login
+            </a>
+          )}
+
           {isPartnerPage && (
-            <Link
-              to="/partner/login"
+            <a
+              href="https://partner.locsho.in/login"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
             >
               <LogIn size={14} strokeWidth={2.5} />
               Partner Login
-            </Link>
+            </a>
           )}
 
-          <Button variant="primary" size="sm" href="/download">
+          <Button variant="primary" size="sm" onClick={openAppStore}>
             {t('nav.getApp')}
           </Button>
         </div>
@@ -131,16 +156,29 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              {isUserPage && (
+                <a
+                  href="https://user.locsho.in/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
+                >
+                  <LogIn size={14} strokeWidth={2.5} />
+                  User Login
+                </a>
+              )}
               {isPartnerPage && (
-                <Link
-                  to="/partner/login"
+                <a
+                  href="https://partner.locsho.in/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
                 >
                   <LogIn size={14} strokeWidth={2.5} />
                   Partner Login
-                </Link>
+                </a>
               )}
-              <Button variant="primary" size="sm" href="/download">
+              <Button variant="primary" size="sm" onClick={openAppStore}>
                 {t('nav.getApp')}
               </Button>
             </div>

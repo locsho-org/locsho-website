@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
 import {
-  Smartphone,
-  MessageSquare,
   Mail,
   Instagram,
   Twitter,
   Facebook,
-  ArrowRight
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+
+const openAppStore = () => {
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  window.open(
+    isIOS
+      ? 'https://apps.apple.com/app/locsho/id6744042655'
+      : 'https://play.google.com/store/apps/details?id=in.locsho',
+    '_blank'
+  );
+};
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -26,12 +33,12 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-            <Link
-              to="/download"
+            <button
+              onClick={openAppStore}
               className="px-8 py-4 bg-[#1AAB6D] text-white font-black uppercase tracking-widest rounded-2xl hover:bg-[#148A57] transition-all text-xs shadow-xl shadow-green-900/10 active:scale-95"
             >
               {t('footer.downloadApp')}
-            </Link>
+            </button>
             <Link
               to="/partner"
               className="px-8 py-4 bg-white text-[#1AAB6D] font-black uppercase tracking-widest rounded-2xl border-2 border-[#1AAB6D] hover:bg-[#E8F5EE] transition-all text-xs active:scale-95"
@@ -44,13 +51,13 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="max-w-[1400px] mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <img src="/logo.png" alt="Locsho" className="w-10 h-10 rounded-xl shadow-lg shadow-green-900/10" />
-              <span className="font-black text-2xl text-[#1A1A2E] tracking-tighter">
-                Loc<span className="text-[#1AAB6D]">sho</span>
+              <span className="font-black text-2xl tracking-tighter">
+                <span className="text-[#1AAB6D]">Loc</span><span className="text-[#F59E0B]">Sho</span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-xs font-medium">
@@ -74,27 +81,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Download */}
-          <div className="lg:pl-8">
-            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">
-              {t('footer.download')}
-            </h4>
-            <ul className="space-y-4">
-              {[
-                { label: t('footer.appStore'), href: '/download' },
-                { label: t('footer.googlePlay'), href: '/download' },
-                { label: t('footer.qrCode'), href: '/download' },
-              ].map((item) => (
-                <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* For Partners */}
           <div>
             <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">
@@ -103,14 +89,20 @@ export default function Footer() {
             <ul className="space-y-4">
               {[
                 { label: t('footer.joinAsPartner'), href: '/partner' },
-                { label: t('footer.partnerLogin'), href: '/partner' },
-                { label: t('footer.pricingPlans'), href: '/partner' },
+                { label: t('footer.partnerLogin'), href: 'https://partner.locsho.in/login', external: true },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -125,7 +117,6 @@ export default function Footer() {
               {[
                 { label: t('footer.privacyPolicy'), href: '/' },
                 { label: t('footer.termsOfService'), href: '/' },
-                { label: t('footer.supportCenter'), href: '/' },
                 { label: t('footer.contactUs'), href: '/' },
               ].map((item) => (
                 <li key={item.label}>
@@ -146,8 +137,6 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6 text-gray-400 text-[10px] font-black uppercase tracking-widest">
             <span className="flex items-center gap-2">🇮🇳 <span className="opacity-60">{t('footer.madeInIndia')}</span></span>
-            <span className="opacity-20">•</span>
-            <span className="opacity-60">{t('footer.location')}</span>
           </div>
         </div>
       </div>
