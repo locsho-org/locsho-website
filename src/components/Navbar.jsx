@@ -84,17 +84,15 @@ export default function Navbar() {
             {i18n.language === 'en' ? '🇮🇳 हिंदी' : '🌐 English'}
           </button>
 
-          {isUserPage && (
-            <a
-              href="https://user.locsho.in/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
-            >
-              <LogIn size={14} strokeWidth={2.5} />
-              User Login
-            </a>
-          )}
+          <a
+            href="https://user.locsho.in/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
+          >
+            <LogIn size={14} strokeWidth={2.5} />
+            User Login
+          </a>
 
           {isPartnerPage && (
             <a
@@ -156,17 +154,15 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              {isUserPage && (
-                <a
-                  href="https://user.locsho.in/login"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
-                >
-                  <LogIn size={14} strokeWidth={2.5} />
-                  User Login
-                </a>
-              )}
+              <a
+                href="https://user.locsho.in/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
+              >
+                <LogIn size={14} strokeWidth={2.5} />
+                User Login
+              </a>
               {isPartnerPage && (
                 <a
                   href="https://partner.locsho.in/login"

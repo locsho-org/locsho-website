@@ -51,7 +51,7 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="max-w-[1400px] mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
@@ -79,6 +79,19 @@ export default function Footer() {
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* For Users */}
+          <div>
+            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">For Users</h4>
+            <ul className="space-y-4">
+              <li>
+                <a href="https://user.locsho.in/login" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                  User Login
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* For Partners */}
