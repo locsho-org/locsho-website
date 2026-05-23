@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import DemoPhoneFrame from './ui/DemoPhoneFrame';
 import { demoVideos } from '../data/media';
 
 const ORDER_ITEMS_EN = [
@@ -11,38 +12,6 @@ const ORDER_ITEMS_EN = [
 
 // ── State durations (ms) ──────────────────────────────────────────────────────
 const DURATIONS = [2800, 2200, 2500]; // incoming → accepted → ready → loop
-
-// ── Phone shell ───────────────────────────────────────────────────────────────
-function PhoneFrame({ children }) {
-  return (
-    <div
-      className="w-[252px] bg-[#1A1A2E] rounded-[44px] p-[10px] shadow-2xl shadow-black/30 ring-1 ring-white/10 mx-auto"
-      aria-hidden="true"
-    >
-      <div className="bg-white rounded-[36px] overflow-hidden">
-        {/* Status bar */}
-        <div className="bg-[#1A1A2E] flex items-center justify-between px-5 py-2">
-          <span className="text-white/70 text-[10px] font-medium">9:41</span>
-          <div className="w-16 h-[18px] bg-black rounded-full" />
-          <span className="text-white/70 text-[10px]">●●●</span>
-        </div>
-        {/* App header */}
-        <div className="bg-[#1AAB6D] px-4 py-2.5 flex items-center justify-between">
-          <span className="text-white font-black text-sm">LocSho Partner</span>
-          <span className="text-white/80 text-xs">🟢 Online</span>
-        </div>
-        {/* Screen content */}
-        <div className="min-h-[380px] bg-[#F8F9FA] relative overflow-hidden">
-          {children}
-        </div>
-        {/* Home indicator */}
-        <div className="bg-white flex justify-center py-2">
-          <div className="w-20 h-1 bg-gray-300 rounded-full" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 // ── Screen: Incoming order ────────────────────────────────────────────────────
 function IncomingScreen() {
@@ -215,13 +184,13 @@ export default function OrderNotificationDemo() {
 
   return (
     <div ref={ref} className="flex flex-col items-center gap-5">
-      <PhoneFrame>
+      <DemoPhoneFrame appName={t('orderDemo.partnerApp')} headerRight={t('orderDemo.online')}>
         <AnimatePresence mode="wait">
           {state === 0 && <IncomingScreen />}
           {state === 1 && <AcceptedScreen />}
           {state === 2 && <ReadyScreen />}
         </AnimatePresence>
-      </PhoneFrame>
+      </DemoPhoneFrame>
 
       {/* Progress dots */}
       <div className="flex items-center gap-2" aria-hidden="true">

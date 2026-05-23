@@ -6,7 +6,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Footer from '../components/Footer';
 import UserFeatures from '../components/UserFeatures';
-import PhoneMockup from '../components/ui/PhoneMockup';
+import UserOrderTrackingDemo from '../components/UserOrderTrackingDemo';
 import Badge from '../components/ui/Badge';
 import { demoVideos } from '../data/media';
 
@@ -224,30 +224,9 @@ export default function User() {
             className="relative flex justify-center"
           >
             <div className="absolute inset-0 bg-[#1AAB6D]/5 rounded-full blur-[100px] scale-150 animate-pulse" />
-            <PhoneMockup 
-              className="relative z-10 drop-shadow-2xl"
-              screenContent={
-                <div className="h-full bg-white p-4">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-8 h-8 bg-gray-100 rounded-lg" />
-                    <div className="flex gap-2">
-                      <div className="w-16 h-4 bg-gray-100 rounded-full" />
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="h-32 bg-[#F0FBF5] rounded-2xl border border-[#1AAB6D]/10 p-4">
-                      <div className="w-1/2 h-4 bg-[#1AAB6D]/20 rounded-full mb-2" />
-                      <div className="w-3/4 h-3 bg-gray-200 rounded-full" />
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="h-24 bg-gray-50 rounded-2xl border border-gray-100" />
-                      <div className="h-24 bg-gray-50 rounded-2xl border border-gray-100" />
-                    </div>
-                    <div className="h-40 bg-gray-50 rounded-2xl border border-gray-100" />
-                  </div>
-                </div>
-              }
-            />
+            <div className="relative z-10 drop-shadow-2xl">
+              <UserOrderTrackingDemo />
+            </div>
             {/* Floating UI elements */}
             <motion.div 
               animate={{ y: [0, -10, 0] }}

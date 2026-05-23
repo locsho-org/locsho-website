@@ -281,6 +281,28 @@
     "partnerApp": "LocSho पार्टनर",
     "online": "🟢 ऑनलाइन"
   },
+  "trackingDemo": {
+    "location": "📍 नोएडा",
+    "orderPlaced": "ऑर्डर दिया!",
+    "orderConfirmed": "ऑर्डर #1042 कन्फर्म",
+    "shopName": "राजेश जनरल स्टोर",
+    "item1": "बासमती चावल 5kg",
+    "item2": "तूर दाल 500g",
+    "trackOrder": "ऑर्डर ट्रैक करें →",
+    "orderNum": "ऑर्डर #1042",
+    "stepPlaced": "ऑर्डर दिया",
+    "stepPreparing": "तैयार हो रहा है",
+    "stepPrepared": "तैयार",
+    "stepOnWay": "रास्ते में",
+    "stepDelivered": "डिलीवर हुआ",
+    "packingMsg": "दुकानदार आपका ऑर्डर पैक कर रहा है…",
+    "onTheWay": "रास्ते में!",
+    "arrivingIn": "आने में",
+    "eta": "~8 मिनट",
+    "labelPlaced": "ऑर्डर कन्फर्म",
+    "labelPreparing": "तैयार हो रहा है",
+    "labelDelivery": "डिलीवरी पर"
+  },
   "voiceDemo": {
     "addedToCart": "कार्ट में जोड़ा गया!",
     "foundItems": "राजेश जनरल स्टोर से 3 आइटम मिले",

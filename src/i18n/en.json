@@ -281,6 +281,28 @@
     "partnerApp": "LocSho Partner",
     "online": "🟢 Online"
   },
+  "trackingDemo": {
+    "location": "📍 Noida",
+    "orderPlaced": "Order Placed!",
+    "orderConfirmed": "Order #1042 confirmed",
+    "shopName": "Rajesh General Store",
+    "item1": "Basmati Rice 5kg",
+    "item2": "Toor Dal 500g",
+    "trackOrder": "Track Order →",
+    "orderNum": "Order #1042",
+    "stepPlaced": "Order Placed",
+    "stepPreparing": "Being Prepared",
+    "stepPrepared": "Prepared",
+    "stepOnWay": "On the Way",
+    "stepDelivered": "Delivered",
+    "packingMsg": "Shopkeeper is packing your order…",
+    "onTheWay": "On the Way!",
+    "arrivingIn": "Arriving in",
+    "eta": "~8 min",
+    "labelPlaced": "Order confirmed",
+    "labelPreparing": "Being prepared",
+    "labelDelivery": "Out for delivery"
+  },
   "voiceDemo": {
     "addedToCart": "Added to Cart!",
     "foundItems": "Found 3 items from Rajesh General Store",
