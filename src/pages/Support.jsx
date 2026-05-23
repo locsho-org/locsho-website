@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Mail, Phone, ChevronDown, Clock, ShoppingBag, Store, AlertCircle, Package, CreditCard, MapPin, Mic, RefreshCw, UserCheck } from 'lucide-react';
 import Footer from '../components/Footer';
 
-const WHATSAPP_USER    = 'https://wa.me/919999999999?text=Hi%2C%20I%20need%20help%20with%20my%20LocSho%20order.';
-const WHATSAPP_PARTNER = 'https://wa.me/919999999999?text=Hi%2C%20I%20am%20a%20LocSho%20partner%20and%20need%20support.';
+const WHATSAPP_USER    = 'https://wa.me/919891773891?text=Hi%2C%20I%20need%20help%20with%20my%20LocSho%20order.';
+const WHATSAPP_PARTNER = 'https://wa.me/919891773891?text=Hi%2C%20I%20am%20a%20LocSho%20partner%20and%20need%20support.';
 const SUPPORT_EMAIL    = 'support@locsho.in';
 const PARTNER_EMAIL    = 'partner@locsho.in';
 
@@ -126,7 +126,7 @@ export default function Support() {
         {
           icon: MessageCircle,
           label: 'WhatsApp Support',
-          value: '+91 99999 99999',
+          value: '+91 98917 73891',
           sub: 'Fastest response · Usually in 5 min',
           href: WHATSAPP_USER,
           color: '#25D366',
@@ -146,9 +146,9 @@ export default function Support() {
         {
           icon: Phone,
           label: 'Helpline',
-          value: '+91 99999 99999',
+          value: '+91 98917 73891',
           sub: 'Mon–Sat, 9 AM – 9 PM IST',
-          href: 'tel:+919999999999',
+          href: 'tel:+919891773891',
           color: '#F59E0B',
           bg: '#FFFBEB',
           cta: 'Call Now',
@@ -158,7 +158,7 @@ export default function Support() {
         {
           icon: MessageCircle,
           label: 'Partner WhatsApp',
-          value: '+91 99999 99999',
+          value: '+91 98917 73891',
           sub: 'Dedicated partner line · Mon–Sat 8 AM – 10 PM',
           href: WHATSAPP_PARTNER,
           color: '#25D366',
@@ -178,9 +178,9 @@ export default function Support() {
         {
           icon: Phone,
           label: 'Partner Helpline',
-          value: '+91 99999 99999',
+          value: '+91 98917 73891',
           sub: 'Mon–Sat, 8 AM – 10 PM IST',
-          href: 'tel:+919999999999',
+          href: 'tel:+919891773891',
           color: '#F59E0B',
           bg: '#FFFBEB',
           cta: 'Call Now',
