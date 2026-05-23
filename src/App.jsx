@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import User from './pages/User';
 import Partner from './pages/Partner';
+import Support from './pages/Support';
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/" element={<Navigate to="/user" replace />} />
         <Route path="/user" element={<User />} />
         <Route path="/partner" element={<Partner />} />
+        <Route path="/support" element={<Support />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
