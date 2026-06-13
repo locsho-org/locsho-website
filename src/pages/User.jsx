@@ -16,7 +16,8 @@ const openAppStore = () => {
     isIOS
       ? 'https://apps.apple.com/app/locsho/id6744042655'
       : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank'
+    '_blank',
+    'noopener,noreferrer'
   );
 };
 
@@ -211,7 +212,7 @@ export default function User() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank', 'noopener,noreferrer')}>
                 {t('userPage.startOrdering')}
               </Button>
               <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
