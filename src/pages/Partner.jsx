@@ -91,8 +91,7 @@ export default function Partner() {
                 {t('partnerPage.registerShop')}
               </Button>
               <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => {
-                const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-                window.open(isIOS ? 'https://apps.apple.com/app/locsho-partner/id6744042655' : 'https://play.google.com/store/apps/details?id=in.locsho.partner', '_blank');
+                window.open('https://play.google.com/store/apps/details?id=in.locsho.partner', '_blank');
               }}>
                 {t('footer.downloadApp')}
               </Button>

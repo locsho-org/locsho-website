@@ -11,7 +11,7 @@ const openAppStore = () => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
   window.open(
     isIOS
-      ? 'https://apps.apple.com/app/locsho/id6744042655'
+      ? 'https://apps.apple.com/us/app/locsho/id6771481950'
       : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
     '_blank'
   );

@@ -104,8 +104,8 @@ export default function Download() {
   const { t } = useTranslation();
 
   const appLinks = [
-    { store: t('downloadPage.appStore'), platform: t('downloadPage.downloadOn'), icon: appleIcon, subtitle: 'iOS 13+', href: '#' },
-    { store: t('downloadPage.googlePlay'), platform: t('downloadPage.getItOn'), icon: googleIcon, subtitle: t('downloadPage.googlePlaySubtitle'), href: '#' },
+    { store: t('downloadPage.appStore'), platform: t('downloadPage.downloadOn'), icon: appleIcon, subtitle: 'iOS 13+', href: 'https://apps.apple.com/us/app/locsho/id6771481950' },
+    { store: t('downloadPage.googlePlay'), platform: t('downloadPage.getItOn'), icon: googleIcon, subtitle: t('downloadPage.googlePlaySubtitle'), href: 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN' },
   ];
 
   useEffect(() => {
