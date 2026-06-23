@@ -12,13 +12,13 @@ import { demoVideos } from '../data/media';
 
 const openAppStore = () => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  window.open(
+  const w = window.open(
     isIOS
       ? 'https://apps.apple.com/us/app/locsho/id6771481950'
       : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank',
-    'noopener,noreferrer'
+    '_blank'
   );
+  if (w) w.opener = null;
 };
 
 const cn = (...classes) => classes.filter(Boolean).join(' ');
@@ -212,7 +212,7 @@ export default function User() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank', 'noopener,noreferrer')}>
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => { const w = window.open('https://user.locsho.in', '_blank'); if (w) w.opener = null; }}>
                 {t('userPage.startOrdering')}
               </Button>
               <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
