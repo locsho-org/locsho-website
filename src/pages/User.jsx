@@ -12,13 +12,15 @@ import { demoVideos } from '../data/media';
 
 const openAppStore = () => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const w = window.open(
-    isIOS
-      ? 'https://apps.apple.com/us/app/locsho/id6771481950'
-      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank'
-  );
-  if (w) w.opener = null;
+  const url = isIOS
+    ? 'https://apps.apple.com/us/app/locsho/id6771481950'
+    : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN';
+  if (isIOS) {
+    const w = window.open(url, '_blank');
+    if (w) w.opener = null;
+  } else {
+    window.location.href = url;
+  }
 };
 
 const cn = (...classes) => classes.filter(Boolean).join(' ');
