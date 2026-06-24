@@ -190,8 +190,8 @@ export default function User() {
       <section className="relative pt-32 pb-20 px-4 overflow-hidden min-h-[90vh] flex items-center">
         {/* Abstract Background Shapes */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F0FBF5] rounded-l-[100px] -z-10 hidden lg:block" />
-        <div className="absolute top-20 right-20 w-64 h-64 bg-[#1AAB6D] opacity-[0.03] rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#1AAB6D] opacity-[0.02] rounded-full blur-3xl -z-10" />
+        <div className="absolute top-20 right-20 w-64 h-64 bg-[#1AAB6D] opacity-[0.03] rounded-full blur-3xl -z-10 pointer-events-none" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#1AAB6D] opacity-[0.02] rounded-full blur-3xl -z-10 pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
           <motion.div 
@@ -226,7 +226,7 @@ export default function User() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center"
           >
-            <div className="absolute inset-0 bg-[#1AAB6D]/5 rounded-full blur-[100px] scale-150 animate-pulse" />
+            <div className="absolute inset-0 bg-[#1AAB6D]/5 rounded-full blur-[100px] scale-150 animate-pulse pointer-events-none" />
             <div className="relative z-10 drop-shadow-2xl">
               <UserOrderTrackingDemo />
             </div>
