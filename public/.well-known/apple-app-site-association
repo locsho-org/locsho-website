@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "MY898KJ92R.in.locsho.user",
+        "paths": ["/shop/*", "/orders/*", "/profile*"]
+      }
+    ]
+  }
+}

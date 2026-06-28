@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "in.locsho.user",
+    "sha256_cert_fingerprints": [
+      "E9:46:9C:21:F7:75:A9:EE:CE:2E:21:B4:AC:A6:77:63:42:59:2F:55:26:CF:6E:05:86:8D:12:75:B1:4B:01:04"
+    ]
+  }
+}]
