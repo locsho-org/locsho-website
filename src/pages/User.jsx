@@ -313,7 +313,7 @@ export default function User() {
           <p className="text-gray-300 text-lg mb-10 font-medium leading-relaxed">
             {t('userPage.missingShopDesc')}
           </p>
-          <Button variant="white" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black" href="/contact">
+          <Button variant="white" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black" href="https://wa.me/918800453953?text=Hi%2C%20I'd%20like%20to%20request%20a%20shop%20on%20LocSho%3A%20" target="_blank" rel="noopener noreferrer">
             {t('userPage.requestShop')}
           </Button>
         </div>
