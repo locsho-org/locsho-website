@@ -2,7 +2,8 @@
   "nav": {
     "forUser": "ग्राहकों के लिए",
     "forShopkeeper": "दुकानदारों के लिए",
-    "getApp": "ऐप डाउनलोड करें"
+    "getApp": "ऐप डाउनलोड करें",
+    "userLogin": "यूज़र लॉगिन"
   },
   "hero": {
     "badge": "🚀 ग्रेटर नोएडा पायलट — अभी लाइव",
@@ -159,6 +160,8 @@
     "joinUsers": "50,000+ यूज़र्स जुड़ चुके हैं जिन्होंने लोकल शॉपिंग का बेहतर तरीका खोजा।",
     "downloadNow": "ऐप डाउनलोड करें",
     "freeForever": "यूज़र्स के लिए हमेशा फ्री",
+    "orderConfirmed": "ऑर्डर कन्फर्म",
+    "arrivingIn8mins": "8 मिनट में पहुँच रहा है",
     "missingShop": "🏪 आपकी पसंदीदा दुकान नहीं मिली?",
     "missingShopDesc": "हमें बताएं कि आप LocSho पर कौन सी दुकान देखना चाहते हैं। हम उन्हें आमंत्रित करेंगे।",
     "requestShop": "दुकान का अनुरोध करें"
@@ -279,7 +282,11 @@
     "shopkeeperAccepted": "दुकानदार ने स्वीकार किया",
     "customerNotified": "ग्राहक को सूचित किया ✅",
     "partnerApp": "LocSho पार्टनर",
-    "online": "🟢 ऑनलाइन"
+    "online": "🟢 ऑनलाइन",
+    "screenNewOrder": "नया ऑर्डर!",
+    "screenAccepted": "ऑर्डर स्वीकृत",
+    "screenConfirmed": "ऑर्डर कन्फर्म",
+    "notifiedLine": "अनन्या एस. को सूचित कर दिया गया है"
   },
   "trackingDemo": {
     "location": "📍 नोएडा",

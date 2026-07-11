@@ -88,7 +88,7 @@ export default function Footer() {
               <li>
                 <a href="https://user.locsho.in/login" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
-                  User Login
+                  {t('nav.userLogin')}
                 </a>
               </li>
             </ul>

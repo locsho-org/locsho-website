@@ -2,7 +2,8 @@
   "nav": {
     "forUser": "For User",
     "forShopkeeper": "For Shopkeeper",
-    "getApp": "Get App"
+    "getApp": "Get App",
+    "userLogin": "User Login"
   },
   "hero": {
     "badge": "🚀 Greater Noida Pilot — Now Live",
@@ -159,6 +160,8 @@
     "joinUsers": "Join 50,000+ users who have discovered a better way to shop local.",
     "downloadNow": "Download App Now",
     "freeForever": "Free forever for users",
+    "orderConfirmed": "Order Confirmed",
+    "arrivingIn8mins": "Arriving in 8 mins",
     "missingShop": "🏪 Missing Your Favorite Shop?",
     "missingShopDesc": "Tell us which shop you want to see on LocSho. We'll invite them to join the digital revolution.",
     "requestShop": "Request a Shop"
@@ -279,7 +282,11 @@
     "shopkeeperAccepted": "Shopkeeper accepted",
     "customerNotified": "Customer notified ✅",
     "partnerApp": "LocSho Partner",
-    "online": "🟢 Online"
+    "online": "🟢 Online",
+    "screenNewOrder": "New Order!",
+    "screenAccepted": "Order Accepted",
+    "screenConfirmed": "Order Confirmed",
+    "notifiedLine": "Ananya S. has been notified"
   },
   "trackingDemo": {
     "location": "📍 Noida",

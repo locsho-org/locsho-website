@@ -239,8 +239,8 @@ export default function User() {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600">✓</div>
                 <div>
-                  <p className="text-[10px] font-black uppercase text-gray-400">Order Confirmed</p>
-                  <p className="text-xs font-bold text-gray-900">Arriving in 8 mins</p>
+                  <p className="text-[10px] font-black uppercase text-gray-400">{t('userPage.orderConfirmed')}</p>
+                  <p className="text-xs font-bold text-gray-900">{t('userPage.arrivingIn8mins')}</p>
                 </div>
               </div>
             </motion.div>
