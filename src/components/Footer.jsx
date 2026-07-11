@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Mail,
   Instagram,
-  Twitter,
   Facebook,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -68,18 +67,20 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Instagram, label: 'Instagram' },
-                { icon: Twitter, label: 'Twitter' },
-                { icon: Facebook, label: 'Facebook' },
-                { icon: Mail, label: 'Email' },
+                { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/locshoapp/' },
+                { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/LocShoPartner/' },
+                { icon: Mail, label: 'Email', href: 'mailto:admin@folwork.co' },
               ].map((social, i) => (
-                <button
+                <a
                   key={i}
+                  href={social.href}
                   aria-label={social.label}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#1AAB6D] hover:bg-[#E8F5EE] hover:border-[#1AAB6D]/20 transition-all shadow-sm group"
                 >
                   <social.icon size={18} strokeWidth={2.5} className="group-hover:scale-110 transition-transform" />
-                </button>
+                </a>
               ))}
             </div>
           </div>
