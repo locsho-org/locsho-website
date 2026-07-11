@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Shield, Mail, Phone, Building } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import Footer from '../components/Footer';
 
 const sections = [
@@ -104,24 +104,6 @@ export default function Privacy() {
             </section>
           ))}
 
-          {/* Contact */}
-          <section>
-            <h2 className="text-lg font-black text-[#1A1A2E] mb-3">13. Contact Us</h2>
-            <div className="bg-[#1A1A2E] rounded-2xl p-5 text-white">
-              <div className="flex items-center gap-2 mb-3">
-                <Building size={16} className="text-[#1AAB6D]" />
-                <span className="text-sm font-bold">Folwork Private Limited</span>
-              </div>
-              <div className="flex flex-col sm:flex-row sm:gap-6 gap-2">
-                <a href="mailto:ajai@folwork.co" className="flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
-                  <Mail size={14} className="text-[#1AAB6D]" /> ajai@folwork.co
-                </a>
-                <a href="tel:+919891773891" className="flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
-                  <Phone size={14} className="text-blue-400" /> +91 98917 73891
-                </a>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
 
