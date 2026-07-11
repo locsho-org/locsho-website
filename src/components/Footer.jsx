@@ -132,15 +132,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { label: t('footer.privacyPolicy'), href: '/' },
-                { label: t('footer.termsOfService'), href: '/' },
+                { label: t('footer.privacyPolicy'), href: 'https://user.locsho.in/privacy', external: true },
+                { label: t('footer.termsOfService'), href: 'https://user.locsho.in/terms', external: true },
                 { label: t('footer.supportCenter'), href: '/support' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
