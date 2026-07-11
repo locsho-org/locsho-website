@@ -135,7 +135,6 @@ export default function Footer() {
                 { label: t('footer.privacyPolicy'), href: '/' },
                 { label: t('footer.termsOfService'), href: '/' },
                 { label: t('footer.supportCenter'), href: '/support' },
-                { label: t('footer.contactUs'), href: '/support' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
