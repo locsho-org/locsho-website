@@ -212,11 +212,11 @@ export default function User() {
               {t('userPage.desc')}
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-md mx-auto lg:mx-0">
+              <Button variant="primary" size="lg" className="w-full h-16 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
                 {t('userPage.startOrdering')}
               </Button>
-              <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
+              <Button variant="outline" size="lg" className="w-full h-16 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
                 {t('footer.downloadApp')}
               </Button>
             </div>
