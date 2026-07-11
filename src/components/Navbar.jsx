@@ -103,7 +103,7 @@ export default function Navbar() {
               className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
             >
               <LogIn size={14} strokeWidth={2.5} />
-              Partner Login
+              {t('nav.partnerLogin')}
             </a>
           )}
 
@@ -172,7 +172,7 @@ export default function Navbar() {
                   className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
                 >
                   <LogIn size={14} strokeWidth={2.5} />
-                  Partner Login
+                  {t('nav.partnerLogin')}
                 </a>
               )}
               <Button variant="primary" size="sm" onClick={openAppStore}>

@@ -110,22 +110,22 @@ export default function Partner() {
               screenContent={
                 <div className="h-full bg-white flex flex-col">
                   <div className="bg-[#1AAB6D] p-6 text-white pt-10">
-                    <p className="text-[10px] font-black uppercase tracking-widest opacity-80">Today's Sales</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest opacity-80">{t('partnerMockup.todaysSales')}</p>
                     <p className="text-3xl font-black mt-1 tracking-tight">₹12,450</p>
                     <div className="mt-4 flex gap-2">
-                      <div className="bg-white/20 px-2 py-1 rounded text-[8px] font-black uppercase tracking-wider">24 Orders</div>
-                      <div className="bg-white/20 px-2 py-1 rounded text-[8px] font-black uppercase tracking-wider">+12% vs yesterday</div>
+                      <div className="bg-white/20 px-2 py-1 rounded text-[8px] font-black uppercase tracking-wider">{t('partnerMockup.orders')}</div>
+                      <div className="bg-white/20 px-2 py-1 rounded text-[8px] font-black uppercase tracking-wider">{t('partnerMockup.vsYesterday')}</div>
                     </div>
                   </div>
                   <div className="p-4 space-y-3">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Active Orders</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">{t('partnerMockup.activeOrders')}</p>
                     {[1, 2, 3].map(i => (
                       <div key={i} className="bg-white border border-gray-100 rounded-xl p-3 shadow-sm flex items-center justify-between">
                         <div>
-                          <p className="text-xs font-bold text-gray-900">Order #882{i}</p>
-                          <p className="text-[9px] font-bold text-gray-400 uppercase tracking-tight">Ananya S. • ₹183</p>
+                          <p className="text-xs font-bold text-gray-900">{t('partnerMockup.orderPrefix')} #882{i}</p>
+                          <p className="text-[9px] font-bold text-gray-400 uppercase tracking-tight">{t('partnerMockup.customerPrice')}</p>
                         </div>
-                        <div className="bg-green-50 text-green-600 px-2 py-1 rounded-lg text-[8px] font-black uppercase">Ready</div>
+                        <div className="bg-green-50 text-green-600 px-2 py-1 rounded-lg text-[8px] font-black uppercase">{t('partnerMockup.ready')}</div>
                       </div>
                     ))}
                   </div>

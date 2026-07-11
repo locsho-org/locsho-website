@@ -3,7 +3,8 @@
     "forUser": "ग्राहकों के लिए",
     "forShopkeeper": "दुकानदारों के लिए",
     "getApp": "ऐप डाउनलोड करें",
-    "userLogin": "यूज़र लॉगिन"
+    "userLogin": "यूज़र लॉगिन",
+    "partnerLogin": "पार्टनर लॉगिन"
   },
   "hero": {
     "badge": "🚀 ग्रेटर नोएडा पायलट — अभी लाइव",
@@ -128,6 +129,15 @@
     "copyright": "© 2026 LocSho. ग्रेटर नोएडा पायलट। स्थानीय भारत के लिए ❤️ से बनाया गया।",
     "madeInIndia": "🇮🇳 भारत में बना",
     "location": "ग्रेटर नोएडा, उत्तर प्रदेश"
+  },
+  "partnerMockup": {
+    "todaysSales": "आज की बिक्री",
+    "orders": "24 ऑर्डर",
+    "vsYesterday": "+12% कल से",
+    "activeOrders": "एक्टिव ऑर्डर",
+    "orderPrefix": "ऑर्डर",
+    "customerPrice": "अनन्या एस. • ₹183",
+    "ready": "तैयार"
   },
   "langSwitcher": {
     "en": "English",

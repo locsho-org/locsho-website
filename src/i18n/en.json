@@ -3,7 +3,8 @@
     "forUser": "For User",
     "forShopkeeper": "For Shopkeeper",
     "getApp": "Get App",
-    "userLogin": "User Login"
+    "userLogin": "User Login",
+    "partnerLogin": "Partner Login"
   },
   "hero": {
     "badge": "🚀 Greater Noida Pilot — Now Live",
@@ -128,6 +129,15 @@
     "copyright": "© 2026 LocSho. Greater Noida Pilot. Built with ❤️ for local India.",
     "madeInIndia": "🇮🇳 Made in India",
     "location": "Greater Noida, Uttar Pradesh"
+  },
+  "partnerMockup": {
+    "todaysSales": "Today's Sales",
+    "orders": "24 Orders",
+    "vsYesterday": "+12% vs yesterday",
+    "activeOrders": "Active Orders",
+    "orderPrefix": "Order",
+    "customerPrice": "Ananya S. • ₹183",
+    "ready": "Ready"
   },
   "langSwitcher": {
     "en": "English",
