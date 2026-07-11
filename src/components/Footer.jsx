@@ -83,7 +83,7 @@ export default function Footer() {
 
           {/* For Users */}
           <div>
-            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">For Users</h4>
+            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">{t('footer.forUsers')}</h4>
             <ul className="space-y-4">
               <li>
                 <a href="https://user.locsho.in/login" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">

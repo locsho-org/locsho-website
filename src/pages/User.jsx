@@ -30,8 +30,8 @@ function VoiceCartDemo() {
   const [step, setStep] = useState(0);
 
   const voiceCartSteps = [
-    { id: 1, lang: 'Hindi', flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
-    { id: 2, lang: 'Processing...', flag: '🤖', speech: 'AI is understanding your request...', items: [] },
+    { id: 1, lang: t('voiceDemo.langHindi'), flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
+    { id: 2, lang: t('voiceDemo.processing'), flag: '🤖', speech: t('voiceDemo.understanding'), items: [] },
     {
       id: 3,
       lang: t('voiceDemo.addedToCart'),
@@ -61,7 +61,7 @@ function VoiceCartDemo() {
     <div className="bg-white border border-[#1AAB6D]/20 rounded-[2.5rem] p-6 md:p-8 max-w-xl mx-auto shadow-xl shadow-green-900/5">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-10 h-10 bg-[#1AAB6D]/10 rounded-xl flex items-center justify-center text-xl">🎤</div>
-        <h3 className="text-xl font-black text-[#1A1A2E]">AI Voice Cart</h3>
+        <h3 className="text-xl font-black text-[#1A1A2E]">{t('voiceDemo.title')}</h3>
       </div>
 
       <div className="bg-[#F8FDF9] rounded-3xl p-6 mb-8 min-h-[240px] flex flex-col border border-[#1AAB6D]/5 relative overflow-hidden">
@@ -77,7 +77,7 @@ function VoiceCartDemo() {
               <div className="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-6 text-4xl animate-bounce">
                 🎤
               </div>
-              <p className="text-gray-400 font-medium max-w-[200px]">Tap the button below to speak your grocery list</p>
+              <p className="text-gray-400 font-medium max-w-[200px]">{t('voiceDemo.idlePrompt')}</p>
             </motion.div>
           )}
 
@@ -134,7 +134,7 @@ function VoiceCartDemo() {
                     </motion.div>
                   ))}
                   <div className="flex justify-between items-center pt-4 mt-2 border-t border-dashed border-[#1AAB6D]/20">
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Total Order</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">{t('voiceDemo.totalOrder')}</span>
                     <span className="text-[#1AAB6D] font-black text-xl tracking-tighter">₹183</span>
                   </div>
                 </motion.div>

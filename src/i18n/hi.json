@@ -115,6 +115,7 @@
     "appStore": "App Store",
     "googlePlay": "Google Play",
     "qrCode": "QR कोड",
+    "forUsers": "ग्राहकों के लिए",
     "forPartners": "पार्टनर के लिए",
     "joinAsPartner": "पार्टनर बनें",
     "partnerLogin": "पार्टनर लॉगिन",
@@ -315,7 +316,13 @@
     "foundItems": "राजेश जनरल स्टोर से 3 आइटम मिले",
     "aata": "आटा (गेहूं का आटा)",
     "dal": "दाल (तूर)",
-    "milkPacket": "दूध पैकेट"
+    "milkPacket": "दूध पैकेट",
+    "title": "AI वॉइस कार्ट",
+    "idlePrompt": "अपनी किराने की लिस्ट बोलने के लिए नीचे बटन दबाएं",
+    "totalOrder": "कुल ऑर्डर",
+    "langHindi": "हिंदी",
+    "processing": "प्रोसेसिंग...",
+    "understanding": "AI आपके अनुरोध को समझ रहा है..."
   },
   "userSteps": {
     "step1Desc": "किराना, सब्ज़ी, डेयरी और अन्य दुकानें ब्राउज़ करें।",

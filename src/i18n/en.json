@@ -115,6 +115,7 @@
     "appStore": "App Store",
     "googlePlay": "Google Play",
     "qrCode": "QR Code",
+    "forUsers": "For Users",
     "forPartners": "For Partners",
     "joinAsPartner": "Join as Partner",
     "partnerLogin": "Partner Login",
@@ -315,7 +316,13 @@
     "foundItems": "Found 3 items from Rajesh General Store",
     "aata": "Aata (Wheat Flour)",
     "dal": "Dal (Toor)",
-    "milkPacket": "Milk Packet"
+    "milkPacket": "Milk Packet",
+    "title": "AI Voice Cart",
+    "idlePrompt": "Tap the button below to speak your grocery list",
+    "totalOrder": "Total Order",
+    "langHindi": "Hindi",
+    "processing": "Processing...",
+    "understanding": "AI is understanding your request..."
   },
   "userSteps": {
     "step1Desc": "Browse grocery stores, vegetable vendors, dairy shops and more.",
