@@ -87,7 +87,7 @@ export default function Partner() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://play.google.com/store/apps/details?id=in.locsho.partner', '_blank')}>
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://partner.locsho.in/login', '_blank')}>
                 {t('partnerPage.registerShop')}
               </Button>
               <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => {
@@ -235,7 +235,7 @@ export default function Partner() {
           <p className="text-gray-300 text-lg mb-10 max-w-md mx-auto font-medium">
             {t('partnerPage.claimDesc')}
           </p>
-          <Button variant="primary" size="xl" className="h-20 px-12 rounded-[2rem] text-lg tracking-[0.2em] uppercase font-black shadow-2xl shadow-[#1AAB6D]/20" onClick={() => window.open('https://play.google.com/store/apps/details?id=in.locsho.partner', '_blank')}>
+          <Button variant="primary" size="xl" className="h-20 px-12 rounded-[2rem] text-lg tracking-[0.2em] uppercase font-black shadow-2xl shadow-[#1AAB6D]/20" onClick={() => window.open('https://partner.locsho.in/login', '_blank')}>
             {t('partnerPage.registerShop')}
           </Button>
           <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em] mt-8">{t('partnerPage.limitedSlots')}</p>
