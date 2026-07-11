@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 import UserFeatures from '../components/UserFeatures';
 import UserOrderTrackingDemo from '../components/UserOrderTrackingDemo';
 import Badge from '../components/ui/Badge';
-import { demoVideos } from '../data/media';
 
 const openAppStore = () => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -298,47 +297,6 @@ export default function User() {
           </p>
         </div>
         <VoiceCartDemo />
-      </SectionWrapper>
-
-      {/* Video Demo Section */}
-      <SectionWrapper background="white">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-16">
-            <Badge color="green" className="mb-4">{t('userPage.visualTour')}</Badge>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] mb-6 tracking-tight">
-              {t('userPage.seeApp')}
-            </h2>
-            <p className="text-gray-500 text-lg max-w-4xl mx-auto font-medium">
-              Shop directly from nearby stores — no middlemen, no confusion.
-            </p>
-          </div>
-
-          <div className="relative group max-w-3xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl shadow-green-900/10 border-8 border-white bg-white">
-            {demoVideos.user ? (
-              <iframe
-                src={demoVideos.user}
-                title="LocSho User App Demo"
-                className="w-full aspect-video"
-                loading="lazy"
-                allowFullScreen
-              />
-            ) : (
-              <div className="bg-[#F0FBF5] aspect-video flex flex-col items-center justify-center border-2 border-dashed border-[#1AAB6D]/20">
-                <div className="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-4 scale-110 group-hover:scale-125 transition-transform">
-                  <span className="text-4xl">▶️</span>
-                </div>
-                <p className="text-gray-400 font-black uppercase tracking-widest text-xs">Video coming soon</p>
-              </div>
-            )}
-          </div>
-
-          <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button variant="primary" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black shadow-xl shadow-[#1AAB6D]/20" onClick={openAppStore}>
-              {t('userPage.downloadNow')}
-            </Button>
-            <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">{t('userPage.freeForever')}</p>
-          </div>
-        </div>
       </SectionWrapper>
 
       {/* Shop Request CTA */}
