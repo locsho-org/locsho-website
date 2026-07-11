@@ -42,7 +42,7 @@ export default function Navbar() {
   const navLinks = [
     { label: t('nav.forUser'), to: '/user' },
     { label: t('nav.forShopkeeper'), to: '/partner' },
-    { label: 'Support', to: '/support' },
+    { label: t('nav.support'), to: '/support' },
   ];
 
   return (
