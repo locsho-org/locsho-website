@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Mail,
   Instagram,
@@ -7,18 +7,21 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const openAppStore = () => {
+const openAppStore = (isPartner = false) => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  window.open(
-    isIOS
+  // No partner iOS app exists yet — partner always goes to the partner Play Store.
+  const url = isPartner
+    ? 'https://play.google.com/store/apps/details?id=in.locsho.partner'
+    : isIOS
       ? 'https://apps.apple.com/us/app/locsho/id6771481950'
-      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank'
-  );
+      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN';
+  window.open(url, '_blank');
 };
 
 export default function Footer() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const isPartnerPage = location.pathname === '/partner';
   return (
     <footer className="bg-white border-t border-gray-100">
       {/* CTA strip — matching partner dashboard "Activate Subscription" banner style */}
@@ -34,7 +37,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <button
-              onClick={openAppStore}
+              onClick={() => openAppStore(isPartnerPage)}
               className="px-8 py-4 bg-[#1AAB6D] text-white font-black uppercase tracking-widest rounded-2xl hover:bg-[#148A57] transition-all text-xs shadow-xl shadow-green-900/10 active:scale-95"
             >
               {t('footer.downloadApp')}
