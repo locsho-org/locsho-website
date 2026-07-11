@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { MessageCircle, Mail, Phone, ChevronDown, Clock, ShoppingBag, Store, AlertCircle, Package, CreditCard, MapPin, Mic, RefreshCw, UserCheck } from 'lucide-react';
 import Footer from '../components/Footer';
 
@@ -8,75 +9,12 @@ const WHATSAPP_PARTNER = 'https://wa.me/918800453953?text=Hi%2C%20I%20am%20a%20L
 const SUPPORT_EMAIL    = 'admin@folwork.co';
 const PARTNER_EMAIL    = 'admin@folwork.co';
 
-const userFaqs = [
-  {
-    icon: Package,
-    q: 'My order is delayed or not delivered',
-    a: 'First check live tracking in the app. If the rider has not moved in 10+ minutes, tap "Need Help" on the order screen — we will connect you with the rider or arrange a replacement delivery within 15 minutes.',
-  },
-  {
-    icon: RefreshCw,
-    q: 'I want to cancel my order',
-    a: 'Orders can be cancelled free of charge within 2 minutes of placing. After that, cancellation depends on whether the shop has already started preparing. Open the order → tap "Cancel Order". If unavailable, contact support on WhatsApp.',
-  },
-  {
-    icon: CreditCard,
-    q: 'I was charged but order was not placed',
-    a: 'Payment failures where money is deducted are automatically reversed within 3–5 business days. If the amount has not returned after 5 days, WhatsApp us with your UPI transaction ID and we will resolve it within 24 hours.',
-  },
-  {
-    icon: ShoppingBag,
-    q: 'Item I received is wrong or missing',
-    a: 'Take a photo of what you received and WhatsApp it to us within 1 hour of delivery. We will either re-deliver the correct item or issue a full refund for the missing item — no questions asked.',
-  },
-  {
-    icon: Mic,
-    q: 'Voice cart is not understanding my language',
-    a: 'Voice ordering supports Hindi, English, Telugu, Tamil, and Kannada. Make sure microphone permission is granted in your phone settings. Speak clearly and pause briefly between items. For best results, say item name + quantity, e.g. "Do kg aata".',
-  },
-  {
-    icon: MapPin,
-    q: 'No shops available in my area',
-    a: 'LocSho is currently live in Greater Noida. We are expanding rapidly. Drop your pincode on WhatsApp and we will notify you the moment we go live in your area. You can also request a specific shop to join.',
-  },
-];
+// Icons pair with the translated FAQ arrays by index (order matches i18n keys)
+const USER_FAQ_ICONS    = [Package, RefreshCw, CreditCard, ShoppingBag, Mic, MapPin];
+const PARTNER_FAQ_ICONS = [Store, CreditCard, Package, AlertCircle, RefreshCw, UserCheck];
 
-const partnerFaqs = [
-  {
-    icon: Store,
-    q: 'My shop is not showing to customers',
-    a: 'This usually happens when your subscription has expired or your shop is set to "Closed" in the Partner app. Check Dashboard → Shop Status. If status shows "Active" but shop is still invisible, contact partner support immediately.',
-  },
-  {
-    icon: CreditCard,
-    q: 'My payout has not arrived',
-    a: 'Payouts are processed daily before 10 AM for the previous day\'s orders. If your UPI ID is correct and it has been over 24 hours, WhatsApp us with your Shop ID and the expected amount. We resolve payout issues within 4 hours.',
-  },
-  {
-    icon: Package,
-    q: 'How do I add or update my products?',
-    a: 'Go to Partner App → Catalog → Add Item. You can search the master catalog or submit a new item for review. For bulk updates, use Catalog → Quick Price Update. For bulk upload, go to Catalog → Bulk Upload and download the Excel template.',
-  },
-  {
-    icon: AlertCircle,
-    q: 'Customer placed a wrong or fake order',
-    a: 'You can decline any order with a reason. Repeated fake orders from the same customer are flagged automatically. If a customer is abusive or you suspect fraud, report via Partner App → Order → Report Issue, and our team will investigate.',
-  },
-  {
-    icon: RefreshCw,
-    q: 'I cannot log into my Partner account',
-    a: 'Use "Resend OTP" on the login screen. Make sure you are entering the mobile number registered with LocSho. If OTP is still not received after 2 minutes, WhatsApp partner support with your registered number and shop name.',
-  },
-  {
-    icon: UserCheck,
-    q: 'How do I upgrade or renew my subscription?',
-    a: 'Go to Partner App → Subscription → Choose Plan. Payment is via UPI or card. Your plan activates instantly after payment. If payment succeeded but plan did not activate, send the transaction screenshot to partner support.',
-  },
-];
-
-function FaqItem({ item, index }) {
+function FaqItem({ item, icon: Icon, index }) {
   const [open, setOpen] = useState(false);
-  const Icon = item.icon;
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -118,6 +56,7 @@ function FaqItem({ item, index }) {
 }
 
 export default function Support() {
+  const { t } = useTranslation();
   const [tab, setTab] = useState('user');
   const isUser = tab === 'user';
 
@@ -125,69 +64,71 @@ export default function Support() {
     ? [
         {
           icon: MessageCircle,
-          label: 'WhatsApp Support',
+          label: t('support.user.whatsappLabel'),
           value: '+91 88004 53953',
-          sub: 'Fastest response · Usually in 5 min',
+          sub: t('support.user.whatsappSub'),
           href: WHATSAPP_USER,
           color: '#25D366',
           bg: '#F0FBF5',
-          cta: 'Chat on WhatsApp',
+          cta: t('support.chatOnWhatsapp'),
         },
         {
           icon: Mail,
-          label: 'Email Support',
+          label: t('support.user.emailLabel'),
           value: SUPPORT_EMAIL,
-          sub: 'Detailed queries · 4–6 hr response',
+          sub: t('support.user.emailSub'),
           href: `mailto:${SUPPORT_EMAIL}`,
           color: '#1AAB6D',
           bg: '#F0FBF5',
-          cta: 'Send Email',
+          cta: t('support.sendEmail'),
         },
         {
           icon: Phone,
-          label: 'Helpline',
+          label: t('support.user.helplineLabel'),
           value: '+91 88004 53953',
-          sub: 'Mon–Sat, 9 AM – 9 PM IST',
+          sub: t('support.user.helplineSub'),
           href: 'tel:+918800453953',
           color: '#F59E0B',
           bg: '#FFFBEB',
-          cta: 'Call Now',
+          cta: t('support.callNow'),
         },
       ]
     : [
         {
           icon: MessageCircle,
-          label: 'Partner WhatsApp',
+          label: t('support.partner.whatsappLabel'),
           value: '+91 88004 53953',
-          sub: 'Dedicated partner line · Mon–Sat 8 AM – 10 PM',
+          sub: t('support.partner.whatsappSub'),
           href: WHATSAPP_PARTNER,
           color: '#25D366',
           bg: '#F0FBF5',
-          cta: 'Chat on WhatsApp',
+          cta: t('support.chatOnWhatsapp'),
         },
         {
           icon: Mail,
-          label: 'Partner Email',
+          label: t('support.partner.emailLabel'),
           value: PARTNER_EMAIL,
-          sub: 'Billing, payouts, account issues · 2–4 hr SLA',
+          sub: t('support.partner.emailSub'),
           href: `mailto:${PARTNER_EMAIL}`,
           color: '#1AAB6D',
           bg: '#F0FBF5',
-          cta: 'Send Email',
+          cta: t('support.sendEmail'),
         },
         {
           icon: Phone,
-          label: 'Partner Helpline',
+          label: t('support.partner.helplineLabel'),
           value: '+91 88004 53953',
-          sub: 'Mon–Sat, 8 AM – 10 PM IST',
+          sub: t('support.partner.helplineSub'),
           href: 'tel:+918800453953',
           color: '#F59E0B',
           bg: '#FFFBEB',
-          cta: 'Call Now',
+          cta: t('support.callNow'),
         },
       ];
 
-  const faqs = isUser ? userFaqs : partnerFaqs;
+  const faqData = t(isUser ? 'support.userFaqs' : 'support.partnerFaqs', { returnObjects: true });
+  const faqs = Array.isArray(faqData) ? faqData : [];
+  const faqIcons = isUser ? USER_FAQ_ICONS : PARTNER_FAQ_ICONS;
 
   return (
     <div className="min-h-screen bg-[#F8FAF9]">
@@ -195,19 +136,19 @@ export default function Support() {
       <div className="bg-white border-b border-gray-100 pt-24 pb-12 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-block px-3 py-1 bg-[#E8F5EE] text-[#1AAB6D] text-[10px] font-black uppercase tracking-widest rounded-full mb-4">
-            Support Center
+            {t('support.badge')}
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#1A1A2E] tracking-tight mb-4">
-            How can we <span className="text-[#1AAB6D]">help you?</span>
+            {t('support.title1')} <span className="text-[#1AAB6D]">{t('support.title2')}</span>
           </h1>
           <p className="text-gray-500 font-medium text-base max-w-lg mx-auto">
-            Get fast answers for order issues, payments, and account help — separately for customers and shop owners.
+            {t('support.subtitle')}
           </p>
 
           {/* Hours badge */}
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-[#FFFBEB] border border-[#F59E0B]/30 rounded-full">
             <Clock size={14} className="text-[#F59E0B]" strokeWidth={2.5} />
-            <span className="text-xs font-bold text-[#92400E]">Support hours: Mon–Sat, 9 AM – 9 PM IST</span>
+            <span className="text-xs font-bold text-[#92400E]">{t('support.hours')}</span>
           </div>
         </div>
       </div>
@@ -217,8 +158,8 @@ export default function Support() {
         {/* Tab switcher */}
         <div className="flex gap-3 p-1.5 bg-white border border-gray-100 rounded-2xl shadow-sm mb-10 max-w-sm mx-auto">
           {[
-            { key: 'user', icon: ShoppingBag, label: 'I\'m a Customer' },
-            { key: 'partner', icon: Store, label: 'I\'m a Shopkeeper' },
+            { key: 'user', icon: ShoppingBag, label: t('support.tabCustomer') },
+            { key: 'partner', icon: Store, label: t('support.tabShopkeeper') },
           ].map(({ key, icon: Icon, label }) => (
             <button
               key={key}
@@ -280,11 +221,11 @@ export default function Support() {
             {/* FAQs */}
             <div>
               <h2 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4">
-                Common {isUser ? 'Customer' : 'Partner'} Issues
+                {isUser ? t('support.commonCustomerIssues') : t('support.commonPartnerIssues')}
               </h2>
               <div className="flex flex-col gap-3">
                 {faqs.map((item, i) => (
-                  <FaqItem key={item.q} item={item} index={i} />
+                  <FaqItem key={item.q} item={item} icon={faqIcons[i]} index={i} />
                 ))}
               </div>
             </div>
@@ -293,9 +234,7 @@ export default function Support() {
             <div className="mt-8 flex items-start gap-3 p-4 bg-[#FFFBEB] border border-[#F59E0B]/30 rounded-2xl">
               <AlertCircle size={16} className="text-[#F59E0B] shrink-0 mt-0.5" strokeWidth={2.5} />
               <p className="text-xs text-[#92400E] font-medium leading-relaxed">
-                {isUser
-                  ? 'If your issue is not resolved within 24 hours, email us at support@locsho.in with subject "URGENT" and your order number. A senior agent will respond within 2 hours.'
-                  : 'For payout disputes or account suspension appeals, email partner@locsho.in with subject "ESCALATION" and your Shop ID. We resolve critical partner issues within 4 hours on business days.'}
+                {isUser ? t('support.escalationUser') : t('support.escalationPartner')}
               </p>
             </div>
           </motion.div>
