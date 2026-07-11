@@ -132,8 +132,8 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { label: t('footer.privacyPolicy'), href: 'https://user.locsho.in/privacy', external: true },
-                { label: t('footer.termsOfService'), href: 'https://user.locsho.in/terms', external: true },
+                { label: t('footer.privacyPolicy'), href: '/privacy' },
+                { label: t('footer.termsOfService'), href: '/terms' },
                 { label: t('footer.supportCenter'), href: '/support' },
               ].map((item) => (
                 <li key={item.label}>

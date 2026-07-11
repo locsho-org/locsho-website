@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import User from './pages/User';
 import Partner from './pages/Partner';
 import Support from './pages/Support';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 import ShopRedirect from './pages/ShopRedirect';
 import NotFound from './pages/NotFound';
 
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/user" element={<User />} />
         <Route path="/partner" element={<Partner />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/shop/:shopId" element={<ShopRedirect />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
