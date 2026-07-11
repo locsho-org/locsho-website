@@ -5,14 +5,15 @@ import { useTranslation } from 'react-i18next';
 import { LogIn } from 'lucide-react';
 import Button from './ui/Button';
 
-const openAppStore = () => {
+const openAppStore = (isPartner = false) => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  window.open(
-    isIOS
+  // No partner iOS app exists yet — partner always goes to the partner Play Store.
+  const url = isPartner
+    ? 'https://play.google.com/store/apps/details?id=in.locsho.partner'
+    : isIOS
       ? 'https://apps.apple.com/us/app/locsho/id6771481950'
-      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank'
-  );
+      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN';
+  window.open(url, '_blank');
 };
 
 export default function Navbar() {
@@ -107,7 +108,7 @@ export default function Navbar() {
             </a>
           )}
 
-          <Button variant="primary" size="sm" onClick={openAppStore}>
+          <Button variant="primary" size="sm" onClick={() => openAppStore(isPartnerPage)}>
             {t('nav.getApp')}
           </Button>
         </div>
@@ -175,7 +176,7 @@ export default function Navbar() {
                   {t('nav.partnerLogin')}
                 </a>
               )}
-              <Button variant="primary" size="sm" onClick={openAppStore}>
+              <Button variant="primary" size="sm" onClick={() => openAppStore(isPartnerPage)}>
                 {t('nav.getApp')}
               </Button>
             </div>
