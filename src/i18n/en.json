@@ -181,7 +181,7 @@
       },
       {
         "q": "Voice cart is not understanding my language",
-        "a": "Voice ordering supports Hindi, English, Telugu, Tamil, and Kannada. Make sure microphone permission is granted in your phone settings. Speak clearly and pause briefly between items. For best results, say item name + quantity, e.g. \"Do kg aata\"."
+        "a": "Voice ordering supports Hindi and English. Make sure microphone permission is granted in your phone settings. Speak clearly and pause briefly between items. For best results, say item name + quantity, e.g. \"Do kg aata\"."
       },
       {
         "q": "No shops available in my area",
