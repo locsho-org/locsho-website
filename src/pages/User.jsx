@@ -208,10 +208,24 @@ export default function User() {
                 </svg>
               </span>
             </h1>
-            <p className="text-gray-500 text-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+            <p className="text-gray-500 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
               {t('userPage.desc')}
             </p>
-            
+
+            <ul className="grid sm:grid-cols-2 gap-3 mb-10 max-w-xl mx-auto lg:mx-0">
+              {[
+                t('userPage.benefitLocalShop'),
+                t('userPage.benefitSameRates'),
+                t('userPage.benefitFresh'),
+                t('userPage.benefitFastDelivery'),
+              ].map((benefit) => (
+                <li key={benefit} className="flex items-center gap-2 justify-center lg:justify-start text-[#1A1A2E] font-bold text-sm">
+                  <span className="w-6 h-6 bg-[#1AAB6D] rounded-full flex items-center justify-center text-white text-[10px] flex-shrink-0">✓</span>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
               <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
                 {t('userPage.startOrdering')}
