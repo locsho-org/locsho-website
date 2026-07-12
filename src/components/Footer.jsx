@@ -160,7 +160,7 @@ export default function Footer() {
             {t('footer.copyright')}
           </p>
           <div className="flex items-center gap-6 text-gray-400 text-[10px] font-black uppercase tracking-widest">
-            <span className="flex items-center gap-2">🇮🇳 <span className="opacity-60">{t('footer.madeInIndia')}</span></span>
+            <span className="flex items-center gap-2"><span className="opacity-60">{t('footer.madeInIndia')}</span></span>
           </div>
         </div>
       </div>
