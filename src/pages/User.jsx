@@ -212,25 +212,25 @@ export default function User() {
               {t('userPage.desc')}
             </p>
 
-            <ul className="grid sm:grid-cols-2 gap-3 mb-10 max-w-xl mx-auto lg:mx-0">
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-10 w-fit mx-auto lg:mx-0">
               {[
                 t('userPage.benefitLocalShop'),
                 t('userPage.benefitSameRates'),
                 t('userPage.benefitFresh'),
                 t('userPage.benefitFastDelivery'),
               ].map((benefit) => (
-                <li key={benefit} className="flex items-center gap-2 justify-center lg:justify-start text-[#1A1A2E] font-bold text-sm">
+                <li key={benefit} className="flex items-center gap-2 text-[#1A1A2E] font-bold text-sm">
                   <span className="w-6 h-6 bg-[#1AAB6D] rounded-full flex items-center justify-center text-white text-[10px] flex-shrink-0">✓</span>
                   {benefit}
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start max-w-sm sm:max-w-none mx-auto lg:mx-0">
+              <Button variant="primary" size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
                 {t('userPage.startOrdering')}
               </Button>
-              <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
                 {t('footer.downloadApp')}
               </Button>
             </div>
