@@ -197,7 +197,7 @@ export default function User() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
+            className="text-left"
           >
             <Badge color="green" className="mb-6 py-1.5 px-4 text-xs font-black uppercase tracking-[0.2em]">{t('userPage.title')}</Badge>
             <h1 className="text-5xl md:text-7xl font-black text-[#1A1A2E] mb-6 leading-[1.1] tracking-tighter">
@@ -208,11 +208,11 @@ export default function User() {
                 </svg>
               </span>
             </h1>
-            <p className="text-gray-500 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+            <p className="text-gray-500 text-lg mb-8 max-w-xl leading-relaxed font-medium">
               {t('userPage.desc')}
             </p>
 
-            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-10 w-fit mx-auto lg:mx-0">
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-10 w-fit">
               {[
                 t('userPage.benefitLocalShop'),
                 t('userPage.benefitSameRates'),
@@ -226,11 +226,11 @@ export default function User() {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start max-w-sm sm:max-w-none mx-auto lg:mx-0">
-              <Button variant="primary" size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
                 {t('userPage.startOrdering')}
               </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
+              <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
                 {t('footer.downloadApp')}
               </Button>
             </div>
