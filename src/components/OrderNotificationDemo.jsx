@@ -34,8 +34,8 @@ function IncomingScreen() {
           🔔
         </motion.span>
         <div>
-          <p className="text-white font-black text-sm leading-tight">New Order!</p>
-          <p className="text-white/80 text-xs">Ananya S. • Sector 62</p>
+          <p className="text-white font-black text-sm leading-tight">{t('orderDemo.screenNewOrder')}</p>
+          <p className="text-white/80 text-xs">{t('orderDemo.customer')}</p>
         </div>
       </div>
 
@@ -47,17 +47,17 @@ function IncomingScreen() {
           </div>
         ))}
         <div className="border-t border-gray-100 pt-2 flex justify-between">
-          <span className="text-xs font-bold text-[#1A1A2E]">Total</span>
+          <span className="text-xs font-bold text-[#1A1A2E]">{t('orderDemo.total')}</span>
           <span className="text-xs font-black text-[#1AAB6D]">₹183</span>
         </div>
       </div>
 
       <div className="flex gap-2">
         <div className="flex-1 bg-[#1AAB6D] text-white text-xs font-bold py-2.5 rounded-xl text-center">
-          ✅ Accept
+          {t('orderDemo.accept')}
         </div>
         <div className="flex-1 bg-gray-100 text-gray-400 text-xs font-bold py-2.5 rounded-xl text-center">
-          ✕ Decline
+          {t('orderDemo.decline')}
         </div>
       </div>
     </motion.div>
@@ -79,8 +79,8 @@ function AcceptedScreen() {
       <div className="bg-[#E8F5EE] rounded-2xl p-3 mb-4 flex items-center gap-3">
         <span className="text-2xl">✅</span>
         <div>
-          <p className="text-[#1AAB6D] font-black text-sm leading-tight">Order Accepted</p>
-          <p className="text-gray-500 text-xs">Ananya S. • Sector 62</p>
+          <p className="text-[#1AAB6D] font-black text-sm leading-tight">{t('orderDemo.screenAccepted')}</p>
+          <p className="text-gray-500 text-xs">{t('orderDemo.customer')}</p>
         </div>
       </div>
 
@@ -103,7 +103,7 @@ function AcceptedScreen() {
             <div key={i} className="w-1.5 h-1.5 bg-[#1AAB6D] rounded-full" />
           ))}
         </motion.div>
-        <span className="text-xs text-gray-500">Preparing order...</span>
+        <span className="text-xs text-gray-500">{t('orderDemo.preparing')}</span>
       </div>
     </motion.div>
   );
@@ -111,6 +111,7 @@ function AcceptedScreen() {
 
 // ── Screen: Ready ─────────────────────────────────────────────────────────────
 function ReadyScreen() {
+  const { t } = useTranslation();
   return (
     <motion.div
       key="ready"
@@ -127,12 +128,12 @@ function ReadyScreen() {
       >
         🎉
       </motion.div>
-      <p className="text-[#1AAB6D] font-black text-lg mb-1">Order Confirmed</p>
-      <p className="text-gray-500 text-sm mb-4">Customer notified ✅</p>
+      <p className="text-[#1AAB6D] font-black text-lg mb-1">{t('orderDemo.screenConfirmed')}</p>
+      <p className="text-gray-500 text-sm mb-4">{t('orderDemo.notified')}</p>
       <div className="bg-[#F0FBF5] rounded-xl px-4 py-3 w-full">
-        <p className="text-xs text-gray-500">Ananya S. has been notified</p>
+        <p className="text-xs text-gray-500">{t('orderDemo.notifiedLine')}</p>
         <p className="text-xs text-[#1AAB6D] font-bold mt-0.5">
-          Payment via UPI — ₹183
+          {t('orderDemo.paymentVia')} — ₹183
         </p>
       </div>
     </motion.div>

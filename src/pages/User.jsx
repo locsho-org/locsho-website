@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 import UserFeatures from '../components/UserFeatures';
 import UserOrderTrackingDemo from '../components/UserOrderTrackingDemo';
 import Badge from '../components/ui/Badge';
-import { demoVideos } from '../data/media';
 
 const openAppStore = () => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -30,8 +29,8 @@ function VoiceCartDemo() {
   const [step, setStep] = useState(0);
 
   const voiceCartSteps = [
-    { id: 1, lang: 'Hindi', flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
-    { id: 2, lang: 'Processing...', flag: '🤖', speech: 'AI is understanding your request...', items: [] },
+    { id: 1, lang: t('voiceDemo.langHindi'), flag: '🇮🇳', speech: '"Ek kg aata, 500gm dal, aur doodh do packet"', items: [] },
+    { id: 2, lang: t('voiceDemo.processing'), flag: '🤖', speech: t('voiceDemo.understanding'), items: [] },
     {
       id: 3,
       lang: t('voiceDemo.addedToCart'),
@@ -61,7 +60,7 @@ function VoiceCartDemo() {
     <div className="bg-white border border-[#1AAB6D]/20 rounded-[2.5rem] p-6 md:p-8 max-w-xl mx-auto shadow-xl shadow-green-900/5">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-10 h-10 bg-[#1AAB6D]/10 rounded-xl flex items-center justify-center text-xl">🎤</div>
-        <h3 className="text-xl font-black text-[#1A1A2E]">AI Voice Cart</h3>
+        <h3 className="text-xl font-black text-[#1A1A2E]">{t('voiceDemo.title')}</h3>
       </div>
 
       <div className="bg-[#F8FDF9] rounded-3xl p-6 mb-8 min-h-[240px] flex flex-col border border-[#1AAB6D]/5 relative overflow-hidden">
@@ -77,7 +76,7 @@ function VoiceCartDemo() {
               <div className="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-6 text-4xl animate-bounce">
                 🎤
               </div>
-              <p className="text-gray-400 font-medium max-w-[200px]">Tap the button below to speak your grocery list</p>
+              <p className="text-gray-400 font-medium max-w-[200px]">{t('voiceDemo.idlePrompt')}</p>
             </motion.div>
           )}
 
@@ -134,7 +133,7 @@ function VoiceCartDemo() {
                     </motion.div>
                   ))}
                   <div className="flex justify-between items-center pt-4 mt-2 border-t border-dashed border-[#1AAB6D]/20">
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Total Order</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">{t('voiceDemo.totalOrder')}</span>
                     <span className="text-[#1AAB6D] font-black text-xl tracking-tighter">₹183</span>
                   </div>
                 </motion.div>
@@ -209,13 +208,30 @@ export default function User() {
                 </svg>
               </span>
             </h1>
-            <p className="text-gray-500 text-lg mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+            <p className="text-gray-500 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
               {t('userPage.desc')}
             </p>
-            
+
+            <ul className="grid sm:grid-cols-2 gap-3 mb-10 max-w-xl mx-auto lg:mx-0">
+              {[
+                t('userPage.benefitLocalShop'),
+                t('userPage.benefitSameRates'),
+                t('userPage.benefitFresh'),
+                t('userPage.benefitFastDelivery'),
+              ].map((benefit) => (
+                <li key={benefit} className="flex items-center gap-2 justify-center lg:justify-start text-[#1A1A2E] font-bold text-sm">
+                  <span className="w-6 h-6 bg-[#1AAB6D] rounded-full flex items-center justify-center text-white text-[10px] flex-shrink-0">✓</span>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-12 justify-center lg:justify-start">
-              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
+              <Button variant="primary" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={() => window.open('https://user.locsho.in', '_blank')}>
                 {t('userPage.startOrdering')}
+              </Button>
+              <Button variant="outline" size="lg" className="h-16 px-10 rounded-2xl text-base tracking-widest uppercase font-black" onClick={openAppStore}>
+                {t('footer.downloadApp')}
               </Button>
             </div>
           </motion.div>
@@ -239,8 +255,8 @@ export default function User() {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600">✓</div>
                 <div>
-                  <p className="text-[10px] font-black uppercase text-gray-400">Order Confirmed</p>
-                  <p className="text-xs font-bold text-gray-900">Arriving in 8 mins</p>
+                  <p className="text-[10px] font-black uppercase text-gray-400">{t('userPage.orderConfirmed')}</p>
+                  <p className="text-xs font-bold text-gray-900">{t('userPage.arrivingIn8mins')}</p>
                 </div>
               </div>
             </motion.div>
@@ -300,47 +316,6 @@ export default function User() {
         <VoiceCartDemo />
       </SectionWrapper>
 
-      {/* Video Demo Section */}
-      <SectionWrapper background="white">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-16">
-            <Badge color="green" className="mb-4">{t('userPage.visualTour')}</Badge>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1A1A2E] mb-6 tracking-tight">
-              {t('userPage.seeApp')}
-            </h2>
-            <p className="text-gray-500 text-lg max-w-4xl mx-auto font-medium">
-              Shop directly from nearby stores — no middlemen, no confusion.
-            </p>
-          </div>
-
-          <div className="relative group max-w-3xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl shadow-green-900/10 border-8 border-white bg-white">
-            {demoVideos.user ? (
-              <iframe
-                src={demoVideos.user}
-                title="LocSho User App Demo"
-                className="w-full aspect-video"
-                loading="lazy"
-                allowFullScreen
-              />
-            ) : (
-              <div className="bg-[#F0FBF5] aspect-video flex flex-col items-center justify-center border-2 border-dashed border-[#1AAB6D]/20">
-                <div className="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-4 scale-110 group-hover:scale-125 transition-transform">
-                  <span className="text-4xl">▶️</span>
-                </div>
-                <p className="text-gray-400 font-black uppercase tracking-widest text-xs">Video coming soon</p>
-              </div>
-            )}
-          </div>
-
-          <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button variant="primary" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black shadow-xl shadow-[#1AAB6D]/20" onClick={openAppStore}>
-              {t('userPage.downloadNow')}
-            </Button>
-            <p className="text-gray-400 font-black uppercase tracking-widest text-[10px]">{t('userPage.freeForever')}</p>
-          </div>
-        </div>
-      </SectionWrapper>
-
       {/* Shop Request CTA */}
       <SectionWrapper id="request-shop" background="dark" className="relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
@@ -355,7 +330,7 @@ export default function User() {
           <p className="text-gray-300 text-lg mb-10 font-medium leading-relaxed">
             {t('userPage.missingShopDesc')}
           </p>
-          <Button variant="white" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black" href="/contact">
+          <Button variant="white" size="lg" className="h-16 px-12 rounded-2xl text-base tracking-widest uppercase font-black" href="https://wa.me/918800453953?text=Hi%2C%20I'd%20like%20to%20request%20a%20shop%20on%20LocSho%3A%20" target="_blank" rel="noopener noreferrer">
             {t('userPage.requestShop')}
           </Button>
         </div>

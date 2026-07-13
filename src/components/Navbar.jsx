@@ -5,14 +5,15 @@ import { useTranslation } from 'react-i18next';
 import { LogIn } from 'lucide-react';
 import Button from './ui/Button';
 
-const openAppStore = () => {
+const openAppStore = (isPartner = false) => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  window.open(
-    isIOS
+  // No partner iOS app exists yet — partner always goes to the partner Play Store.
+  const url = isPartner
+    ? 'https://play.google.com/store/apps/details?id=in.locsho.partner'
+    : isIOS
       ? 'https://apps.apple.com/us/app/locsho/id6771481950'
-      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank'
-  );
+      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN';
+  window.open(url, '_blank');
 };
 
 export default function Navbar() {
@@ -42,7 +43,7 @@ export default function Navbar() {
   const navLinks = [
     { label: t('nav.forUser'), to: '/user' },
     { label: t('nav.forShopkeeper'), to: '/partner' },
-    { label: 'Support', to: '/support' },
+    { label: t('nav.support'), to: '/support' },
   ];
 
   return (
@@ -92,7 +93,7 @@ export default function Navbar() {
             className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
           >
             <LogIn size={14} strokeWidth={2.5} />
-            User Login
+            {t('nav.userLogin')}
           </a>
 
           {isPartnerPage && (
@@ -103,11 +104,11 @@ export default function Navbar() {
               className="flex items-center gap-1.5 px-4 py-2 text-sm font-black border-2 border-[#1AAB6D] text-[#1AAB6D] rounded-full hover:bg-[#1AAB6D]/5 transition-all"
             >
               <LogIn size={14} strokeWidth={2.5} />
-              Partner Login
+              {t('nav.partnerLogin')}
             </a>
           )}
 
-          <Button variant="primary" size="sm" onClick={openAppStore}>
+          <Button variant="primary" size="sm" onClick={() => openAppStore(isPartnerPage)}>
             {t('nav.getApp')}
           </Button>
         </div>
@@ -162,7 +163,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
               >
                 <LogIn size={14} strokeWidth={2.5} />
-                User Login
+                {t('nav.userLogin')}
               </a>
               {isPartnerPage && (
                 <a
@@ -172,10 +173,10 @@ export default function Navbar() {
                   className="flex items-center gap-2 py-2 text-sm font-black text-[#1AAB6D]"
                 >
                   <LogIn size={14} strokeWidth={2.5} />
-                  Partner Login
+                  {t('nav.partnerLogin')}
                 </a>
               )}
-              <Button variant="primary" size="sm" onClick={openAppStore}>
+              <Button variant="primary" size="sm" onClick={() => openAppStore(isPartnerPage)}>
                 {t('nav.getApp')}
               </Button>
             </div>

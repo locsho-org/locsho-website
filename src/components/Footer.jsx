@@ -1,24 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Mail,
   Instagram,
-  Twitter,
   Facebook,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const openAppStore = () => {
+const openAppStore = (isPartner = false) => {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  window.open(
-    isIOS
+  // No partner iOS app exists yet — partner always goes to the partner Play Store.
+  const url = isPartner
+    ? 'https://play.google.com/store/apps/details?id=in.locsho.partner'
+    : isIOS
       ? 'https://apps.apple.com/us/app/locsho/id6771481950'
-      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN',
-    '_blank'
-  );
+      : 'https://play.google.com/store/apps/details?id=in.locsho.user&hl=en_IN';
+  window.open(url, '_blank');
 };
 
 export default function Footer() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const isPartnerPage = location.pathname === '/partner';
   return (
     <footer className="bg-white border-t border-gray-100">
       {/* CTA strip — matching partner dashboard "Activate Subscription" banner style */}
@@ -34,7 +36,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <button
-              onClick={openAppStore}
+              onClick={() => openAppStore(isPartnerPage)}
               className="px-8 py-4 bg-[#1AAB6D] text-white font-black uppercase tracking-widest rounded-2xl hover:bg-[#148A57] transition-all text-xs shadow-xl shadow-green-900/10 active:scale-95"
             >
               {t('footer.downloadApp')}
@@ -65,30 +67,32 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Instagram, label: 'Instagram' },
-                { icon: Twitter, label: 'Twitter' },
-                { icon: Facebook, label: 'Facebook' },
-                { icon: Mail, label: 'Email' },
+                { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/locshoapp/' },
+                { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/LocShoPartner/' },
+                { icon: Mail, label: 'Email', href: 'mailto:admin@folwork.co' },
               ].map((social, i) => (
-                <button
+                <a
                   key={i}
+                  href={social.href}
                   aria-label={social.label}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 hover:text-[#1AAB6D] hover:bg-[#E8F5EE] hover:border-[#1AAB6D]/20 transition-all shadow-sm group"
                 >
                   <social.icon size={18} strokeWidth={2.5} className="group-hover:scale-110 transition-transform" />
-                </button>
+                </a>
               ))}
             </div>
           </div>
 
           {/* For Users */}
           <div>
-            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">For Users</h4>
+            <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6">{t('footer.forUsers')}</h4>
             <ul className="space-y-4">
               <li>
                 <a href="https://user.locsho.in/login" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
-                  User Login
+                  {t('nav.userLogin')}
                 </a>
               </li>
             </ul>
@@ -128,16 +132,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { label: t('footer.privacyPolicy'), href: '/' },
-                { label: t('footer.termsOfService'), href: '/' },
+                { label: t('footer.privacyPolicy'), href: '/privacy' },
+                { label: t('footer.termsOfService'), href: '/terms' },
                 { label: t('footer.supportCenter'), href: '/support' },
-                { label: t('footer.contactUs'), href: '/support' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.href} className="text-gray-500 hover:text-[#1AAB6D] text-sm font-bold transition-all flex items-center gap-2 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#1AAB6D] transition-colors" />
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -150,7 +160,7 @@ export default function Footer() {
             {t('footer.copyright')}
           </p>
           <div className="flex items-center gap-6 text-gray-400 text-[10px] font-black uppercase tracking-widest">
-            <span className="flex items-center gap-2">🇮🇳 <span className="opacity-60">{t('footer.madeInIndia')}</span></span>
+            <span className="flex items-center gap-2"><span className="opacity-60">{t('footer.madeInIndia')}</span></span>
           </div>
         </div>
       </div>

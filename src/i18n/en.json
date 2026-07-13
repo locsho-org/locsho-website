@@ -2,7 +2,10 @@
   "nav": {
     "forUser": "For User",
     "forShopkeeper": "For Shopkeeper",
-    "getApp": "Get App"
+    "getApp": "Get App",
+    "userLogin": "User Login",
+    "partnerLogin": "Partner Login",
+    "support": "Support"
   },
   "hero": {
     "badge": "🚀 Greater Noida Pilot — Now Live",
@@ -27,7 +30,7 @@
     "title": "Shopping Made Effortless",
     "subtitle": "Everything you need to order from local shops — fast, simple, in your language.",
     "voiceCart": "🎤 AI Voice Cart",
-    "voiceCartDesc": "Just speak your grocery list in Hindi, Telugu, Tamil, or Kannada — our AI adds items to your cart automatically.",
+    "voiceCartDesc": "Just speak your grocery list in Hindi or English — our AI adds items to your cart automatically.",
     "multiLang": "🌐 Multi-language Support",
     "multiLangDesc": "Use LocSho in your preferred regional language. No more language barrier between you and your local shop.",
     "gps": "📍 GPS-based Shop Discovery",
@@ -71,7 +74,7 @@
       "No subscription required",
       "Multi-shop checkout",
       "Real-time order tracking",
-      "AI voice cart (Hindi, Telugu, Tamil, Kannada)",
+      "AI voice cart (Hindi, English)",
       "24/7 customer support via WhatsApp"
     ],
     "forShopOwners": "For Shop Owners",
@@ -114,6 +117,7 @@
     "appStore": "App Store",
     "googlePlay": "Google Play",
     "qrCode": "QR Code",
+    "forUsers": "For Users",
     "forPartners": "For Partners",
     "joinAsPartner": "Join as Partner",
     "partnerLogin": "Partner Login",
@@ -127,6 +131,15 @@
     "madeInIndia": "🇮🇳 Made in India",
     "location": "Greater Noida, Uttar Pradesh"
   },
+  "partnerMockup": {
+    "todaysSales": "Today's Sales",
+    "orders": "24 Orders",
+    "vsYesterday": "+12% vs yesterday",
+    "activeOrders": "Active Orders",
+    "orderPrefix": "Order",
+    "customerPrice": "Ananya S. • ₹183",
+    "ready": "Ready"
+  },
   "langSwitcher": {
     "en": "English",
     "hi": "हिंदी"
@@ -136,6 +149,10 @@
     "subtitle": "Order from shops you already trust.",
     "desc": "Groceries, vegetables, and daily essentials delivered from your neighborhood stores. No middleman, direct prices, local trust.",
     "startOrdering": "Start Ordering",
+    "benefitLocalShop": "Same Local Shop",
+    "benefitSameRates": "Same Shop Rates (No Extra Charges)",
+    "benefitFresh": "Fresh Products",
+    "benefitFastDelivery": "Fast Home Delivery",
     "users": "50k+ Users",
     "partnerShops": "500+ Partner Shops",
     "deliveryTime": "10min Delivery Time",
@@ -148,7 +165,7 @@
     "step4": "🚚 Fast Delivery",
     "aiFirst": "AI-First Experience",
     "orderWithVoice": "Order with Your Voice",
-    "voiceDesc": "Speak your grocery list in Hindi, Telugu, Tamil, or English. Our AI parses every item and finds it at your favorite local store instantly.",
+    "voiceDesc": "Speak your grocery list in Hindi or English. Our AI parses every item and finds it at your favorite local store instantly.",
     "tryVoice": "🎤 Try Voice Ordering",
     "aiProcessing": "🎙️ AI Processing...",
     "resetDemo": "🔄 Reset Demo",
@@ -159,6 +176,8 @@
     "joinUsers": "Join 50,000+ users who have discovered a better way to shop local.",
     "downloadNow": "Download App Now",
     "freeForever": "Free forever for users",
+    "orderConfirmed": "Order Confirmed",
+    "arrivingIn8mins": "Arriving in 8 mins",
     "missingShop": "🏪 Missing Your Favorite Shop?",
     "missingShopDesc": "Tell us which shop you want to see on LocSho. We'll invite them to join the digital revolution.",
     "requestShop": "Request a Shop"
@@ -279,7 +298,11 @@
     "shopkeeperAccepted": "Shopkeeper accepted",
     "customerNotified": "Customer notified ✅",
     "partnerApp": "LocSho Partner",
-    "online": "🟢 Online"
+    "online": "🟢 Online",
+    "screenNewOrder": "New Order!",
+    "screenAccepted": "Order Accepted",
+    "screenConfirmed": "Order Confirmed",
+    "notifiedLine": "Ananya S. has been notified"
   },
   "trackingDemo": {
     "location": "📍 Noida",
@@ -308,7 +331,13 @@
     "foundItems": "Found 3 items from Rajesh General Store",
     "aata": "Aata (Wheat Flour)",
     "dal": "Dal (Toor)",
-    "milkPacket": "Milk Packet"
+    "milkPacket": "Milk Packet",
+    "title": "AI Voice Cart",
+    "idlePrompt": "Tap the button below to speak your grocery list",
+    "totalOrder": "Total Order",
+    "langHindi": "Hindi",
+    "processing": "Processing...",
+    "understanding": "AI is understanding your request..."
   },
   "userSteps": {
     "step1Desc": "Browse grocery stores, vegetable vendors, dairy shops and more.",
