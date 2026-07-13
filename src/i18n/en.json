@@ -144,6 +144,90 @@
     "en": "English",
     "hi": "हिंदी"
   },
+  "support": {
+    "badge": "Support Center",
+    "title1": "How can we",
+    "title2": "help you?",
+    "subtitle": "Get fast answers for order issues, payments, and account help — separately for customers and shop owners.",
+    "hours": "Support hours: Mon–Sat, 9 AM – 9 PM IST",
+    "tabCustomer": "I'm a Customer",
+    "tabShopkeeper": "I'm a Shopkeeper",
+    "commonCustomerIssues": "Common Customer Issues",
+    "commonPartnerIssues": "Common Partner Issues",
+    "chatOnWhatsapp": "Chat on WhatsApp",
+    "sendEmail": "Send Email",
+    "callNow": "Call Now",
+    "user": {
+      "whatsappLabel": "WhatsApp Support",
+      "whatsappSub": "Fastest response · Usually in 5 min",
+      "emailLabel": "Email Support",
+      "emailSub": "Detailed queries · 4–6 hr response",
+      "helplineLabel": "Helpline",
+      "helplineSub": "Mon–Sat, 9 AM – 9 PM IST"
+    },
+    "partner": {
+      "whatsappLabel": "Partner WhatsApp",
+      "whatsappSub": "Dedicated partner line · Mon–Sat 8 AM – 10 PM",
+      "emailLabel": "Partner Email",
+      "emailSub": "Billing, payouts, account issues · 2–4 hr SLA",
+      "helplineLabel": "Partner Helpline",
+      "helplineSub": "Mon–Sat, 8 AM – 10 PM IST"
+    },
+    "escalationUser": "If your issue is not resolved within 24 hours, email us at support@locsho.in with subject \"URGENT\" and your order number. A senior agent will respond within 2 hours.",
+    "escalationPartner": "For payout disputes or account suspension appeals, email partner@locsho.in with subject \"ESCALATION\" and your Shop ID. We resolve critical partner issues within 4 hours on business days.",
+    "userFaqs": [
+      {
+        "q": "My order is delayed or not delivered",
+        "a": "First check live tracking in the app. If the rider has not moved in 10+ minutes, tap \"Need Help\" on the order screen — we will connect you with the rider or arrange a replacement delivery within 15 minutes."
+      },
+      {
+        "q": "I want to cancel my order",
+        "a": "Orders can be cancelled free of charge within 2 minutes of placing. After that, cancellation depends on whether the shop has already started preparing. Open the order → tap \"Cancel Order\". If unavailable, contact support on WhatsApp."
+      },
+      {
+        "q": "I was charged but order was not placed",
+        "a": "Payment failures where money is deducted are automatically reversed within 3–5 business days. If the amount has not returned after 5 days, WhatsApp us with your UPI transaction ID and we will resolve it within 24 hours."
+      },
+      {
+        "q": "Item I received is wrong or missing",
+        "a": "Take a photo of what you received and WhatsApp it to us within 1 hour of delivery. We will either re-deliver the correct item or issue a full refund for the missing item — no questions asked."
+      },
+      {
+        "q": "Voice cart is not understanding my language",
+        "a": "Voice ordering supports Hindi and English. Make sure microphone permission is granted in your phone settings. Speak clearly and pause briefly between items. For best results, say item name + quantity, e.g. \"Do kg aata\"."
+      },
+      {
+        "q": "No shops available in my area",
+        "a": "LocSho is currently live in Greater Noida. We are expanding rapidly. Drop your pincode on WhatsApp and we will notify you the moment we go live in your area. You can also request a specific shop to join."
+      }
+    ],
+    "partnerFaqs": [
+      {
+        "q": "My shop is not showing to customers",
+        "a": "This usually happens when your subscription has expired or your shop is set to \"Closed\" in the Partner app. Check Dashboard → Shop Status. If status shows \"Active\" but shop is still invisible, contact partner support immediately."
+      },
+      {
+        "q": "My payout has not arrived",
+        "a": "Payouts are processed daily before 10 AM for the previous day's orders. If your UPI ID is correct and it has been over 24 hours, WhatsApp us with your Shop ID and the expected amount. We resolve payout issues within 4 hours."
+      },
+      {
+        "q": "How do I add or update my products?",
+        "a": "Go to Partner App → Catalog → Add Item. You can search the master catalog or submit a new item for review. For bulk updates, use Catalog → Quick Price Update. For bulk upload, go to Catalog → Bulk Upload and download the Excel template."
+      },
+      {
+        "q": "Customer placed a wrong or fake order",
+        "a": "You can decline any order with a reason. Repeated fake orders from the same customer are flagged automatically. If a customer is abusive or you suspect fraud, report via Partner App → Order → Report Issue, and our team will investigate."
+      },
+      {
+        "q": "I cannot log into my Partner account",
+        "a": "Use \"Resend OTP\" on the login screen. Make sure you are entering the mobile number registered with LocSho. If OTP is still not received after 2 minutes, WhatsApp partner support with your registered number and shop name."
+      },
+      {
+        "q": "How do I upgrade or renew my subscription?",
+        "a": "Go to Partner App → Subscription → Choose Plan. Payment is via UPI or card. Your plan activates instantly after payment. If payment succeeded but plan did not activate, send the transaction screenshot to partner support."
+      }
+    ]
+  },
   "userPage": {
     "title": "New Era of Shopping",
     "subtitle": "Order from shops you already trust.",
