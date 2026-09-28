@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/r/:code",
+      "destination": "https://user.locsho.in/r/:code",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
